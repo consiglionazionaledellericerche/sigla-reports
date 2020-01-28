@@ -209,16 +209,6 @@ and ord.NUMERO= $P{NUMERO}]]>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{DENOMINAZIONE_SEDE}]]></textFieldExpression>
 			</textField>
-			<subreport>
-				<reportElement x="9" y="0" width="300" height="90" uuid="e7325b72-89ba-431c-9140-83e70bb77406">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<subreportParameter name="DIR_SUBREPORT">
-					<subreportParameterExpression><![CDATA[$P{DIR_SUBREPORT}]]></subreportParameterExpression>
-				</subreportParameter>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{DIR_SUBREPORT}+"LogoIss.jasper"]]></subreportExpression>
-			</subreport>
 			<textField>
 				<reportElement style="LogoIss" x="472" y="2" width="219" height="18" uuid="8aa76d63-3bef-458f-b4fd-51c4134d6f10"/>
 				<box>
@@ -320,6 +310,10 @@ and ord.NUMERO= $P{NUMERO}]]>
 					<font fontName="Serif" size="9" isBold="true" isItalic="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["  CITARE SEMPRE GLI ESTREMI DELL'ORDINE E DEL PROT. INTERNO SU BOLLE E FATTURE"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="15" y="15" width="154" height="30" uuid="3813b934-1108-4c8a-a2ce-54c4ef6eb1cb"/>
+				<textFieldExpression><![CDATA[$P{DIR_SUBREPORT}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
