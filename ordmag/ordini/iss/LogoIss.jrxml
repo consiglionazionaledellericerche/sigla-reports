@@ -65,7 +65,7 @@
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA[ $P{DIR_SUBREPORT}+ "/iss.bmp"]]></imageExpression>
+				<imageExpression><![CDATA[ $P{DIR_SUBREPORT}+ "iss.bmp"]]></imageExpression>
 			</image>
 		</band>
 	</pageHeader>

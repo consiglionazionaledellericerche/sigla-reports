@@ -20,7 +20,7 @@
 		<defaultValueExpression><![CDATA[6]]></defaultValueExpression>
 	</parameter>
 	<parameter name="DIR_SUBREPORT" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["/"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[select 
@@ -217,7 +217,7 @@ and ord.NUMERO= $P{NUMERO}]]>
 					<subreportParameterExpression><![CDATA[$P{DIR_SUBREPORT}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{DIR_SUBREPORT}+"/LogoIss.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{DIR_SUBREPORT}+"LogoIss.jasper"]]></subreportExpression>
 			</subreport>
 			<textField>
 				<reportElement style="LogoIss" x="472" y="2" width="219" height="18" uuid="8aa76d63-3bef-458f-b4fd-51c4134d6f10"/>
