@@ -2,6 +2,9 @@
 <!-- Created with Jaspersoft Studio version 6.6.0.final utlizzo versione della libreria JasperReports6.6.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LogoIss" pageWidth="300" pageHeight="100" whenNoDataType="AllSectionsNoDetail" columnWidth="300" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="5ae622b7-8b50-4d53-94bf-082187ab5631">
 	<style name="LogoIss" markup="styled" fontSize="10" isBold="false"/>
+	<style name="NORMAL" isDefault="true" fontName="Times New Roman" fontSize="8" pdfFontName="Times-Roman"/>
+	<style name="BOLD" style="NORMAL" fontName="Times New Roman" fontSize="8" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="TITLE" style="BOLD" fontName="Times New Roman" fontSize="12" isBold="true" pdfFontName="Times-Bold"/>
 	<parameter name="DIR_SUBREPORT" class="java.lang.String">
 		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
 	</parameter>
@@ -19,7 +22,7 @@
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Serif" size="12"/>
+					<font fontName="Times New Roman" size="12"/>
 				</textElement>
 				<text><![CDATA[  ISTITUTO SUPERIORE DI SANITA']]></text>
 			</staticText>
@@ -42,7 +45,7 @@
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Serif" size="7" isBold="true"/>
+					<font fontName="Times New Roman" size="7" isBold="true"/>
 				</textElement>
 				<text><![CDATA[TELEGRAMMI:ISTISAN-00161 ROMA - TELEX 0649901]]></text>
 			</staticText>
@@ -65,7 +68,7 @@
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA[ $P{DIR_SUBREPORT}+ "iss.bmp"]]></imageExpression>
+				<imageExpression><![CDATA[$P{DIR_SUBREPORT}+ "iss.bmp"]]></imageExpression>
 			</image>
 		</band>
 	</pageHeader>
