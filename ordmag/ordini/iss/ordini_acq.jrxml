@@ -195,6 +195,10 @@ and ord.NUMERO= $P{NUMERO}]]>
 		<band height="201" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField>
+				<reportElement x="234" y="49" width="276" height="30" uuid="da2893c8-5e54-43bb-bcee-a8e603fd0efe"/>
+				<textFieldExpression><![CDATA["Campo di Testo"]]></textFieldExpression>
+			</textField>
+			<textField>
 				<reportElement x="114" y="139" width="100" height="30" uuid="d112d950-a890-4506-96af-6d441342f9fa"/>
 				<textFieldExpression><![CDATA[$P{DIR_SUBREPORT}]]></textFieldExpression>
 			</textField>
