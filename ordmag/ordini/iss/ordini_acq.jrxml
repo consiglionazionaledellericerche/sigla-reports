@@ -227,40 +227,10 @@ and ord.NUMERO= $P{NUMERO}]]>
 	<columnHeader>
 		<band height="55">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
-			<staticText>
-				<reportElement x="15" y="0" width="20" height="50" uuid="902eedfb-829f-4a0d-86e7-9cea0834933f">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement rotation="Right">
-					<font fontName="Times New Roman" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[  RIGA]]></text>
-			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="72" splitType="Stretch">
-			<textField>
-				<reportElement mode="Opaque" x="14" y="0" width="20" height="40" backcolor="#ABA19F" uuid="95f21203-16ae-4c3b-b248-a45ce4460ce5">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="aebae010-0829-496e-9d65-fcbea8a09554"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textFieldExpression><![CDATA[$F{RIGA}]]></textFieldExpression>
-			</textField>
-		</band>
+		<band height="72" splitType="Stretch"/>
 	</detail>
 	<pageFooter>
 		<band height="62" splitType="Stretch">
