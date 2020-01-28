@@ -311,16 +311,6 @@ and ord.NUMERO= $P{NUMERO}]]>
 				</textElement>
 				<textFieldExpression><![CDATA["  CITARE SEMPRE GLI ESTREMI DELL'ORDINE E DEL PROT. INTERNO SU BOLLE E FATTURE"]]></textFieldExpression>
 			</textField>
-			<subreport>
-				<reportElement x="9" y="0" width="300" height="90" uuid="5444d404-3947-42a0-867a-5368b1bc914a">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<subreportParameter name="DIR_SUBREPORT">
-					<subreportParameterExpression><![CDATA[$P{DIR_SUBREPORT}]]></subreportParameterExpression>
-				</subreportParameter>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{DIR_SUBREPORT}+"LogoIss.jasper"]]></subreportExpression>
-			</subreport>
 		</band>
 	</pageHeader>
 	<columnHeader>
