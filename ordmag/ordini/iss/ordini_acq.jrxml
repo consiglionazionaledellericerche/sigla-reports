@@ -195,14 +195,8 @@ and ord.NUMERO= $P{NUMERO}]]>
 		<band height="201" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField>
-				<reportElement style="NORMAL" x="472" y="2" width="219" height="18" uuid="8aa76d63-3bef-458f-b4fd-51c4134d6f10"/>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textFieldExpression><![CDATA[" ORDINE N° "+$F{NUMERO}+" / "+$F{CD_NUMERATORE}+"   DEL "+(new SimpleDateFormat("dd/MM/YYYY").format($F{DATA_ORDINE}))]]></textFieldExpression>
+				<reportElement x="234" y="49" width="276" height="30" uuid="da2893c8-5e54-43bb-bcee-a8e603fd0efe"/>
+				<textFieldExpression><![CDATA["Campo di Testo"]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
