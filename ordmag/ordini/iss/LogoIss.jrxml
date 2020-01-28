@@ -2,6 +2,9 @@
 <!-- Created with Jaspersoft Studio version 6.6.0.final utlizzo versione della libreria JasperReports6.6.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LogoIss" pageWidth="300" pageHeight="100" whenNoDataType="AllSectionsNoDetail" columnWidth="300" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="5ae622b7-8b50-4d53-94bf-082187ab5631">
 	<style name="LogoIss" markup="styled" fontSize="10" isBold="false"/>
+	<parameter name="DIR_SUBREPORT" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -62,7 +65,7 @@
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA["iss.bmp"]]></imageExpression>
+				<imageExpression><![CDATA[ $P{DIR_SUBREPORT}+ "/iss.bmp"]]></imageExpression>
 			</image>
 		</band>
 	</pageHeader>
