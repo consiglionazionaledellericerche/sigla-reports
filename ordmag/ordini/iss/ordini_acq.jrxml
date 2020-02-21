@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.6.0.final utlizzo versione della libreria JasperReports6.6.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ordini_acq" pageWidth="730" pageHeight="950" columnWidth="730" leftMargin="0" rightMargin="0" topMargin="10" bottomMargin="0" uuid="7a5a3dd8-3013-4b20-a254-ed19ce09e5ce">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sigla-test"/>
 	<style name="NORMAL" isDefault="true" fontName="Times New Roman" fontSize="8" pdfFontName="Times-Roman"/>
 	<style name="BOLD" style="NORMAL" fontName="Times New Roman" fontSize="8" isBold="true" pdfFontName="Times-Bold"/>
 	<style name="TITLE" style="BOLD" fontName="Times New Roman" fontSize="12" isBold="true" pdfFontName="Times-Bold"/>
@@ -311,6 +312,16 @@ and ord.NUMERO= $P{NUMERO}]]>
 				</textElement>
 				<textFieldExpression><![CDATA["  CITARE SEMPRE GLI ESTREMI DELL'ORDINE E DEL PROT. INTERNO SU BOLLE E FATTURE"]]></textFieldExpression>
 			</textField>
+			<subreport>
+				<reportElement x="9" y="0" width="300" height="90" uuid="5444d404-3947-42a0-867a-5368b1bc914a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<subreportParameter name="DIR_SUBREPORT">
+					<subreportParameterExpression><![CDATA[$P{DIR_SUBREPORT}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{DIR_SUBREPORT}+"LogoIss.jasper"]]></subreportExpression>
+			</subreport>
 		</band>
 	</pageHeader>
 	<columnHeader>
