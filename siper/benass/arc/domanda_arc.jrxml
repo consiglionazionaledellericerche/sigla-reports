@@ -88,6 +88,10 @@
 		<property name="net.sf.jasperreports.json.field.expression" value="ban_anno_dichiarazione_redditi"/>
 		<fieldDescription><![CDATA[ban_anno_dichiarazione_redditi]]></fieldDescription>
 	</field>
+	<field name="ban_modello_domanda" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="ban_modello_domanda"/>
+		<fieldDescription><![CDATA[ban_modello_domanda]]></fieldDescription>
+	</field>
 	<field name="matricola_dip" class="java.lang.Integer">
 		<property name="net.sf.jasperreports.json.field.expression" value="matricola_dip"/>
 		<fieldDescription><![CDATA[matricola_dip]]></fieldDescription>
@@ -314,7 +318,7 @@ $F{dip_nominativo}.trim() + " prende atto, ai sensi dell'art.13 della Legge 196/
 		<groupExpression><![CDATA[$F{matricola_dip}]]></groupExpression>
 		<groupHeader>
 			<band splitType="Stretch"/>
-			<band height="50">
+			<band height="54">
 				<printWhenExpression><![CDATA[$F{printSchedaIsee}.equals( "Y" )]]></printWhenExpression>
 				<textField isBlankWhenNull="false">
 					<reportElement key="staticText-25" mode="Opaque" x="0" y="3" width="514" height="20" backcolor="#CCCCCC" uuid="cfa55e22-ab22-4e4c-ba68-a957e1e84100">
@@ -326,7 +330,9 @@ $F{dip_nominativo}.trim() + " prende atto, ai sensi dell'art.13 della Legge 196/
 					<textFieldExpression><![CDATA[$F{numSchedaIsee}+" - "+$F{labelIsee}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
-					<reportElement key="textField-60" style="TNR10" x="11" y="27" width="493" height="22" uuid="f4921654-a841-4ad3-9302-fbb8056d2295"/>
+					<reportElement key="textField-60" style="TNR10" x="11" y="27" width="493" height="22" uuid="f4921654-a841-4ad3-9302-fbb8056d2295">
+						<printWhenExpression><![CDATA[$F{ban_modello_domanda}==null]]></printWhenExpression>
+					</reportElement>
 					<textElement textAlignment="Justified"/>
 					<textFieldExpression><![CDATA[$F{indicatoreIseeAnno1}!=null?
 "L'indicatore della situazione economica equivalente (ISEE ORDINARIO) per l'anno è "+$F{indicatoreIseeAnno1}:
@@ -340,13 +346,23 @@ $F{dip_nominativo}.trim() + " prende atto, ai sensi dell'art.13 della Legge 196/
 + " DICHIARA che per " +$F{ban_anno_dichiarazione_redditi} + " l'anno "+$F{ban_anno_dichiarazione_redditi}+
 " non ha inserito, nell'apposita anagrafica, alcuna dichiarazione ISEE ORDINARIO (oppure non risulta confermata). Pertanto, ai fini della redazione della graduatoria e della determinazione dell'importo spettante sarà considerato un ISEE ORDINARIO presunto della fascia massima."]]></textFieldExpression>
 				</textField>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
+					<reportElement key="textField-60" style="TNR10" x="11" y="27" width="493" height="22" uuid="1b870232-71e1-497e-a7a7-22c67c2d2178">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<printWhenExpression><![CDATA[!($F{ban_modello_domanda}==null)]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Justified"/>
+					<textFieldExpression><![CDATA[($F{dip_sesso}.equals("M")?"Il sottoscritto":"La sottoscritta") + " DICHIARA che ai fini della presente domanda verrà automaticamente considerato l'ISEE ordinario, in stato 'confermato', valido alla scadenza per la presentazione delle domande. In caso contrario l'ISEE verrà considerato al valore più alto previsto."]]></textFieldExpression>
+				</textField>
 			</band>
 			<band height="23">
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				<printWhenExpression><![CDATA[$F{printSchedaIsee}.equals( "Y" ) &&
-$F{ban_anno_inizio_val}<$F{ban_anno_fine_val} && ($F{indicatoreIseeAnno1}!=null || $F{indicatoreIseeAnno2}!=null)]]></printWhenExpression>
+				<printWhenExpression><![CDATA[$F{ban_modello_domanda}==null &&
+($F{printSchedaIsee}.equals( "Y" ) &&
+$F{ban_anno_inizio_val}<$F{ban_anno_fine_val} && ($F{indicatoreIseeAnno1}!=null || $F{indicatoreIseeAnno2}!=null))]]></printWhenExpression>
 				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-					<reportElement key="textField-60" style="TNR10" x="11" y="0" width="493" height="23" uuid="0c6c2a37-1823-44db-9ba0-1fbb8cb0fdab">
+					<reportElement key="textField-60" style="TNR10" x="11" y="0" width="493" height="23" printWhenGroupChanges="Dipendente" uuid="0c6c2a37-1823-44db-9ba0-1fbb8cb0fdab">
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					</reportElement>
 					<textElement textAlignment="Justified"/>
