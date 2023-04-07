@@ -188,6 +188,10 @@
 		<property name="net.sf.jasperreports.json.field.expression" value="printDichiarazioneCaricoFiscale"/>
 		<fieldDescription><![CDATA[printDichiarazioneCaricoFiscale]]></fieldDescription>
 	</field>
+	<field name="printDisabilitaPartecipanti" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="printDisabilitaPartecipanti"/>
+		<fieldDescription><![CDATA[printDisabilitaPartecipanti]]></fieldDescription>
+	</field>
 	<field name="printIntolleranzePartecipanti" class="java.lang.String">
 		<property name="net.sf.jasperreports.json.field.expression" value="printIntolleranzePartecipanti"/>
 		<fieldDescription><![CDATA[printIntolleranzePartecipanti]]></fieldDescription>
@@ -228,6 +232,9 @@ $F{dip_nominativo}.trim() + ",  "+($F{dip_sesso}.equals("M")?"nato ":"nata ")
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				<subreport>
 					<reportElement x="1" y="3" width="515" height="30" uuid="e59b64ca-cc63-489a-a4fa-7bc5f91748c5"/>
+					<subreportParameter name="printDisabilitaPartecipanti">
+						<subreportParameterExpression><![CDATA[$F{printDisabilitaPartecipanti}]]></subreportParameterExpression>
+					</subreportParameter>
 					<subreportParameter name="printIntolleranzePartecipanti">
 						<subreportParameterExpression><![CDATA[$F{printIntolleranzePartecipanti}]]></subreportParameterExpression>
 					</subreportParameter>
