@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final utlizzo versione della libreria JasperReports6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="situazionedicassa_subreport0" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="92f2b230-6359-4335-8a1d-a42d4c7ccb1a">
 	<property name="ireport.scriptlethandling" value="0"/>
 	<property name="ireport.encoding" value="UTF-8"/>
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="ISS-TEST"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<import value="net.sf.jasperreports.engine.*"/>
 	<import value="java.util.*"/>
 	<import value="net.sf.jasperreports.engine.data.*"/>
@@ -32,7 +35,7 @@
 	</parameter>
 	<queryString>
 		<![CDATA[select * from PRT_VPG_SIT_CASSA
-Order by ORDINAMENTO,ORDINE]]>
+Order by CDS,ORDINAMENTO,ORDINE]]>
 	</queryString>
 	<field name="ID" class="java.math.BigDecimal"/>
 	<field name="CHIAVE" class="java.lang.String"/>
@@ -167,7 +170,7 @@ Order by ORDINAMENTO,ORDINE]]>
 		<band height="16" splitType="Stretch">
 			<printWhenExpression><![CDATA[new Boolean(($F{FL_TOTALE} != null && $F{FL_TOTALE}.equals("S"))
   ||($F{FL_TOTALE} != null && $F{FL_TOTALE}.equals("C"))?!($F{TIPO}.equals("C"))?true:false:true)]]></printWhenExpression>
-			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" pattern="" isBlankWhenNull="true">
 				<reportElement key="textField" style="FONT_DESCRIZIONE" x="3" y="0" width="423" height="15" uuid="9ad5c1cf-c8db-4203-a479-4d79f5b51b06"/>
 				<box leftPadding="2" rightPadding="2">
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -180,7 +183,7 @@ Order by ORDINAMENTO,ORDINE]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{DESCRIZIONE}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
 				<reportElement key="textField" style="TNR9" x="428" y="0" width="67" height="15" uuid="ec985a49-eadc-424e-b024-bb1dd5aba013"/>
 				<box leftPadding="2" rightPadding="2">
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -193,7 +196,7 @@ Order by ORDINAMENTO,ORDINE]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{IMPORTO_PARZ}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
 				<reportElement key="textField" mode="Transparent" x="513" y="0" width="67" height="15" uuid="a985d5b3-91bd-40fe-96ba-727ec5b4be24"/>
 				<box leftPadding="2" rightPadding="2">
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
