@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final utlizzo versione della libreria JasperReports6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="situazione_sintetica_x_progetto_riepilogo" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e2b12cdf-7e2e-475f-8db5-046d497e7fd2">
 	<property name="ireport.scriptlethandling" value="0"/>
 	<property name="ireport.encoding" value="ISO-8859-1"/>
@@ -84,7 +85,7 @@
        nvl(sum(decode(ti_gestione, 'S', NVL(VARIAZIONI_ACC, 0), 0)),0) variazioni_acc_spe,
        nvl(sum(decode(ti_gestione, 'S', NVL(STANZIAMENTO_DEC, 0), 0)),0) stanziamento_spe,
        nvl(sum(decode(ti_gestione, 'S', NVL(VARIAZIONI_DEC, 0), 0)),0) variazioni_spe,
-       nvl(sum(decode(ti_gestione, 'S', NVL(TOT_IMPACC, 0), 0)),0) impegni,
+       nvl(sum(decode(ti_gestione, 'S', NVL(TOT_IMPACC, 0)+NVL(TOT_VINCOLI, 0), 0)),0) impegni,
        nvl(sum(decode(ti_gestione, 'S', NVL(TOT_MANREV, 0), 0)),0) pagamenti,
        nvl(sum(decode(ti_gestione, 'S', NVL(TOT_NUMMOV, 0), 0)),0) nummov_spe
 FROM TMP_STAMPA_SITUAZIONE_PROGETTI
@@ -107,7 +108,7 @@ AND   TIPO_RECORD = 'PRINC']]>
 	<field name="NUMMOV_SPE" class="java.math.BigDecimal"/>
 	<detail>
 		<band height="134">
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement key="textField-36" style="VERB8" x="3" y="3" width="842" height="15" uuid="5a627b98-6c9c-43a9-9728-811bf0d0aefc"/>
 				<box topPadding="4">
 					<topPen lineWidth="0.0" lineColor="#000000"/>
@@ -126,7 +127,7 @@ AND   TIPO_RECORD = 'PRINC']]>
 			<rectangle>
 				<reportElement x="4" y="21" width="828" height="110" uuid="87d0b5f6-0c29-40f3-bf08-7fd29c13690f"/>
 			</rectangle>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement key="textField-36" style="VERB8" x="163" y="77" width="65" height="30" uuid="d75b7398-1065-4b75-95d3-19489caf53b7"/>
 				<box topPadding="4">
 					<topPen lineWidth="0.5" lineColor="#000000"/>
@@ -137,7 +138,7 @@ AND   TIPO_RECORD = 'PRINC']]>
 				<textElement textAlignment="Center" verticalAlignment="Top"/>
 				<textFieldExpression><![CDATA["Assestato"]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement key="textField-36" style="VERB8" x="228" y="77" width="65" height="30" uuid="b2dfef32-0bea-4792-af1f-4acd3bede26c"/>
 				<box topPadding="4">
 					<topPen lineWidth="0.5" lineColor="#000000"/>
@@ -148,7 +149,7 @@ AND   TIPO_RECORD = 'PRINC']]>
 				<textElement textAlignment="Center" verticalAlignment="Top"/>
 				<textFieldExpression><![CDATA["Accertato"]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement key="textField-36" style="VERB8" x="293" y="77" width="65" height="30" uuid="70e8e947-b9a8-4f38-9103-155d8277b040"/>
 				<box topPadding="4">
 					<topPen lineWidth="0.5" lineColor="#000000"/>
@@ -159,7 +160,7 @@ AND   TIPO_RECORD = 'PRINC']]>
 				<textElement textAlignment="Center" verticalAlignment="Top"/>
 				<textFieldExpression><![CDATA["Riscosso"]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement key="textField-5" style="VERB8" x="10" y="25" width="810" height="15" uuid="b76b75fb-0213-4480-b5d3-b6bcd2eed62a"/>
 				<box>
 					<topPen lineWidth="0.0" lineColor="#000000"/>
@@ -170,7 +171,7 @@ AND   TIPO_RECORD = 'PRINC']]>
 				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA["Area Progettuale: "+$P{P_CD_PROGLIV1}+" - "+$P{P_DS_PROGLIV1}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement key="textField-5" style="VERB8" x="10" y="40" width="810" height="15" uuid="6b34fb36-e604-4565-98d5-a71012730bac"/>
 				<box>
 					<topPen lineWidth="0.0" lineColor="#000000"/>
@@ -181,7 +182,7 @@ AND   TIPO_RECORD = 'PRINC']]>
 				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA["Progetto: "+$P{P_CD_PROGLIV2}+" - "+$P{P_DS_PROGLIV2}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement key="textField-36" style="VERB8" x="163" y="62" width="195" height="15" uuid="2229e5ad-0188-45b1-ae82-0be37ce7b57b"/>
 				<box topPadding="4">
 					<topPen lineWidth="0.0" lineColor="#000000"/>
@@ -225,7 +226,7 @@ AND   TIPO_RECORD = 'PRINC']]>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{RISCOSSIONI}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement key="textField-36" style="VERB8" x="466" y="62" width="260" height="15" uuid="32618154-c000-436a-9910-31656928cecd">
 					<printWhenExpression><![CDATA[$P{P_PRINT_PIANO_ECO}.equals( true )]]></printWhenExpression>
 				</reportElement>
@@ -238,7 +239,7 @@ AND   TIPO_RECORD = 'PRINC']]>
 				<textElement textAlignment="Center" verticalAlignment="Top"/>
 				<textFieldExpression><![CDATA["SPESA"]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement key="textField-36" style="VERB8" x="531" y="62" width="195" height="15" uuid="2b72f06e-1392-4cc8-9412-1ce3de5156c4">
 					<printWhenExpression><![CDATA[$P{P_PRINT_PIANO_ECO}.equals( false )]]></printWhenExpression>
 				</reportElement>
@@ -284,7 +285,7 @@ AND   TIPO_RECORD = 'PRINC']]>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{PAGAMENTI}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement key="textField-36" style="VERB8" x="531" y="77" width="195" height="15" uuid="1ee083fe-fa3d-40a2-ac65-ed18328b33e4"/>
 				<box topPadding="4">
 					<topPen lineWidth="0.5" lineColor="#000000"/>
@@ -308,7 +309,7 @@ AND   TIPO_RECORD = 'PRINC']]>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{STANZIAMENTO_ACC_SPE}.add( $F{VARIAZIONI_ACC_SPE})]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement key="textField-36" style="VERB8" x="596" y="92" width="65" height="15" uuid="90193634-f818-4731-8d3d-05d7d3a0f724"/>
 				<box topPadding="4">
 					<topPen lineWidth="0.5" lineColor="#000000"/>
@@ -317,9 +318,9 @@ AND   TIPO_RECORD = 'PRINC']]>
 					<rightPen lineWidth="0.5" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top"/>
-				<textFieldExpression><![CDATA["Impegnato"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Impegn./Vinc."]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement key="textField-36" style="VERB8" x="661" y="92" width="65" height="15" uuid="5f75d507-0a88-4614-bd85-1571736080c4"/>
 				<box topPadding="4">
 					<topPen lineWidth="0.5" lineColor="#000000"/>
@@ -330,7 +331,7 @@ AND   TIPO_RECORD = 'PRINC']]>
 				<textElement textAlignment="Center" verticalAlignment="Top"/>
 				<textFieldExpression><![CDATA["Pagato"]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement key="textField-36" style="VERB8" x="531" y="92" width="65" height="15" uuid="94d9ac4a-64ae-4ff1-a1b6-17ca3ede1405"/>
 				<box topPadding="4">
 					<topPen lineWidth="0.5" lineColor="#000000"/>
@@ -341,7 +342,7 @@ AND   TIPO_RECORD = 'PRINC']]>
 				<textElement textAlignment="Center" verticalAlignment="Top"/>
 				<textFieldExpression><![CDATA["Assestato"]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement key="textField-36" style="VERB8" x="466" y="92" width="65" height="15" uuid="5a8ac728-a0bc-4bff-bdbe-9ebd342e31df">
 					<printWhenExpression><![CDATA[$P{P_PRINT_PIANO_ECO}.equals( true )]]></printWhenExpression>
 				</reportElement>
@@ -354,7 +355,7 @@ AND   TIPO_RECORD = 'PRINC']]>
 				<textElement textAlignment="Center" verticalAlignment="Top"/>
 				<textFieldExpression><![CDATA["Assestato"]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement key="textField-36" style="VERB8" x="466" y="77" width="65" height="15" uuid="1481454e-15c9-433b-820d-706d1e324c2f">
 					<printWhenExpression><![CDATA[$P{P_PRINT_PIANO_ECO}.equals( true )]]></printWhenExpression>
 				</reportElement>
@@ -370,7 +371,7 @@ AND   TIPO_RECORD = 'PRINC']]>
 		</band>
 		<band height="48">
 			<printWhenExpression><![CDATA[$P{P_PRINT_PIANO_ECO}.equals(Boolean.TRUE)]]></printWhenExpression>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement key="textField-36" style="VERB8" x="3" y="3" width="842" height="15" uuid="ba4011c6-a4a7-46a4-9fbc-0df92910924f"/>
 				<box topPadding="4">
 					<topPen lineWidth="0.0" lineColor="#000000"/>
@@ -471,7 +472,7 @@ AND   TIPO_RECORD = 'PRINC']]>
 		</band>
 		<band height="50">
 			<printWhenExpression><![CDATA[$P{P_PRINT_PIANO_ECO}.equals(Boolean.TRUE)]]></printWhenExpression>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement key="textField-36" style="VERB8" x="4" y="3" width="842" height="15" uuid="66a4a0a4-571c-4352-a199-6295bc37bec4"/>
 				<box topPadding="4">
 					<topPen lineWidth="0.0" lineColor="#000000"/>

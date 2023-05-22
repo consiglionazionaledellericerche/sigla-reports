@@ -45,6 +45,7 @@
 	<style name="TNRC7" fontName="Times New Roman" fontSize="7" isItalic="true" pdfFontName="Times-Italic"/>
 	<style name="TNRGC7" fontName="Times New Roman" fontSize="7" isBold="true" isItalic="true" pdfFontName="Times-BoldItalic"/>
 	<style name="TNRGC9" fontName="Times New Roman" fontSize="9" isBold="true" isItalic="true" pdfFontName="Times-BoldItalic"/>
+	<parameter name="printDisabilitaPartecipanti" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="printTelefonoPartecipanti" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="printIntolleranzePartecipanti" class="java.lang.String"/>
 	<queryString language="JSON">
@@ -120,6 +121,7 @@
 			<staticText>
 				<reportElement style="SSHG8" x="333" y="21" width="60" height="16" uuid="e12df914-95cc-4d6d-91ae-3c4a105b5462">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$P{printDisabilitaPartecipanti}.equals( "Y" )]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Disabile]]></text>
@@ -165,6 +167,7 @@ Farmaci]]></text>
 			<textField textAdjust="StretchHeight" pattern="¤ #,##0.00" isBlankWhenNull="false">
 				<reportElement key="textField" style="TNR9" x="333" y="2" width="60" height="13" uuid="d7bddcd9-4c83-4d37-8189-4978897b6b93">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$P{printDisabilitaPartecipanti}.equals( "Y" )]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{disabile}]]></textFieldExpression>
