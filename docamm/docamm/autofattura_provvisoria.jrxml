@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final utlizzo versione della libreria JasperReports6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="fattura_attiva_provvisoria" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4bb7c89d-e7c1-4040-8fca-6e403eb37b53">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="220"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="772"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SiglaFormazione"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<style name="TNR8" fontName="Times New Roman" fontSize="8" pdfFontName="Times-Roman"/>
 	<style name="TNRG8" fontName="Times New Roman" fontSize="8" isBold="true" pdfFontName="Times-Bold"/>
 	<style name="TNRC8" fontName="Times New Roman" fontSize="8" isItalic="true" pdfFontName="Times-Italic"/>
@@ -25,192 +30,454 @@
 	<style name="TNRGC16" fontName="Times New Roman" fontSize="16" isBold="true" isItalic="true" pdfFontName="Times-BoldItalic"/>
 	<style name="TNRGC10" forecolor="#FFFFFF" fontName="Times New Roman" pdfFontName="Times-BoldItalic"/>
 	<parameter name="esercizio" class="java.lang.Integer" isForPrompting="false">
-		<defaultValueExpression><![CDATA[2015]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[2023]]></defaultValueExpression>
 	</parameter>
-	<parameter name="pg_fattura" class="java.lang.Long" isForPrompting="false">
-		<defaultValueExpression><![CDATA[new Long(2195)]]></defaultValueExpression>
+	<parameter name="pg_autofattura" class="java.lang.Long" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new Long(240)]]></defaultValueExpression>
 	</parameter>
 	<parameter name="cd_uo_origine" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["035.000"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["044.000"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select distinct ter.denominazione_sede as ds_cd_terzo, ter2.denominazione_sede as ds_cd_uo_origine, uo.*, fa.*, frg.*,
-vi.cd_voce_iva, vi.ds_voce_iva, rmp.ds_modalita_pag as ds_modalita_pag_uo_cds, rmp.ti_pagamento,
-AC.ESERCIZIO_CONTRATTO, AC.PG_CONTRATTO, CO.CD_CIG_fattura_attiva, CO.CD_CUP,decode(Cnr.dt01-fa.dt_registrazione,abs(Cnr.dt01-fa.dt_registrazione),'N',fl_liquidazione_differita) split, decode(anag.ti_entita,'F','Codice Fiscale: '||anag.codice_fiscale,decode(fa.partita_iva,null,'Codice Fiscale: '||anag.codice_fiscale,'Partita IVA: '||fa.partita_iva)) codfis_piva, ter.via_sede||' '||nvl(ter.numero_civico_sede,'')||' '||ter.cap_comune_sede||' '||com.ds_comune indirizzo, ter2.via_sede||','||ter2.numero_civico_sede||' -  '||ter2.cap_comune_sede||' '||com2.ds_comune||', '||com2.cd_provincia indirizzo_cds_uo,  'Codice Fiscale '|| anag2.codice_fiscale||' - Partita IVA '||anag2.partita_iva dati_fiscali_cds_uo, decode(fa.protocollo_iva, null, null, replace(fa.cd_uo_origine, '.', '')||fa.esercizio||lpad(substr(fa.cd_tipo_sezionale,3,4),4,'0')||
-fa.Ti_fattura||lpad(fa.protocollo_iva,5,'0')) numero_fattura, cnr_ass.VAL01 motivo_assolvimento, (select count(0) from fattura_attiva_riga R, BENE_SERVIZIO B where Fa.ESERCIZIO = R.ESERCIZIO AND Fa.CD_CDS = R.CD_CDS AND Fa.CD_UNITA_ORGANIZZATIVA = R.CD_UNITA_ORGANIZZATIVA AND Fa.PG_FATTURA_ATTIVA = R.PG_FATTURA_ATTIVA AND R.CD_BENE_SERVIZIO = B.CD_BENE_SERVIZIO AND B.FL_BOLLO = 'Y') CONTA_ESISTE_BOLLO
-from fattura_attiva fa, terzo ter, terzo ter2, unita_organizzativa uo, fattura_attiva_riga frg, voce_iva vi,
-rif_modalita_pagamento rmp, accertamento ac, contratto co,configurazione_cnr cnr, anagrafico anag, comune com, comune com2, anagrafico anag2, configurazione_cnr cnr_ass
-where fa.esercizio = $P{esercizio}
-and fa.cd_uo_origine =  $P{cd_uo_origine}
-and fa.pg_fattura_attiva =  $P{pg_fattura}
-and ter.cd_anag = anag.cd_anag
-and ter.pg_comune_sede = com.pg_comune
-and ter.cd_terzo = fa.cd_terzo
-AND ter2.cd_terzo = fa.cd_terzo_uo_cds
-and ter2.cd_anag = anag2.cd_anag
-and ter2.pg_comune_sede = com2.pg_comune
-AND uo.cd_unita_organizzativa = fa.cd_uo_origine
-AND frg.cd_cds = fa.cd_cds
-AND frg.cd_unita_organizzativa = fa.cd_unita_organizzativa
-AND frg.esercizio = fa.esercizio
-AND frg.pg_fattura_attiva = fa.pg_fattura_attiva
-AND vi.cd_voce_iva = frg.cd_voce_iva
-and fa.cd_modalita_pag_uo_cds = rmp.cd_modalita_pag
-and ac.cd_cds = frg.cd_cds_accertamento
-and ac.esercizio = frg.esercizio_accertamento
-and AC.PG_ACCERTAMENTO = FRG.PG_ACCERTAMENTO
-and AC.ESERCIZIO_ORIGINALE = FRG.ESERCIZIO_ORI_ACCERTAMENTO
-and AC.ESERCIZIO_CONTRATTO = CO.ESERCIZIO(+)
-and AC.PG_CONTRATTO = CO.PG_CONTRATTO(+)
-and AC.STATO_CONTRATTO = CO.STATO(+)
- and Cnr.ESERCIZIO = 0
-  and Cnr.cd_chiave_primaria = 'SPLIT_PAYMENT'
-  AND Cnr.cd_chiave_secondaria = 'ATTIVA'
-  AND Cnr.cd_unita_funzionale = '*'
-  and fa.esercizio = Cnr_ass.ESERCIZIO(+)
-  and 'BOLLO_VIRTUALE' = Cnr_ass.cd_chiave_primaria(+)
-  AND 'ANNOTAZIONE_ASSOLVIMENTO' = Cnr_ass.cd_chiave_secondaria(+)
-  AND '*' = Cnr_ass.cd_unita_funzionale (+)
+		<![CDATA[select distinct ter.denominazione_sede as ds_cd_terzo, 
+                ter2.denominazione_sede as ds_cd_uo_origine, 
+                uo.*, 
+                af.*, 
+                frg.*,
+				vi.cd_voce_iva, vi.ds_voce_iva, 
+				'Contanti' as ds_modalita_pag_uo_cds,
+				decode(anag.ti_entita,'F','Codice Fiscale: '||anag.codice_fiscale,
+				decode(anag.partita_iva,null,'Codice Fiscale: '||anag.codice_fiscale,
+				'Partita IVA: '||anag.partita_iva)) codfis_piva, 
+				ter.via_sede||' '||nvl(ter.numero_civico_sede,'')||' '||ter.cap_comune_sede||' '||com.ds_comune indirizzo, 
+				ter2.via_sede||','||ter2.numero_civico_sede||' -  '||ter2.cap_comune_sede||' '||com2.ds_comune||', '||com2.cd_provincia indirizzo_cds_uo,  
+				'Codice Fiscale '|| anag2.codice_fiscale||' - Partita IVA '||anag2.partita_iva dati_fiscali_cds_uo, 
+				decode(af.protocollo_iva, null, null, 
+				replace(af.cd_uo_origine, '.', '')||af.esercizio||lpad(substr(af.cd_tipo_sezionale,3,4),4,'0')||af.Ti_fattura||lpad(af.protocollo_iva,5,'0')) numero_fattura,
+				fp.im_totale_iva, fp.im_totale_imponibile, fp.im_totale_fattura
+from autofattura af
+LEFT JOIN fattura_passiva fp ON fp.ESERCIZIO = af.ESERCIZIO AND fp.CD_CDS = af.CD_CDS_FT_PASSIVA AND fp.CD_UNITA_ORGANIZZATIVA = af.CD_UO_FT_PASSIVA AND fp.PG_FATTURA_PASSIVA = af.PG_FATTURA_PASSIVA  
+LEFT JOIN terzo ter ON ter.cd_terzo = 1
+LEFT JOIN terzo ter2 ON ter2.cd_terzo = 1
+LEFT JOIN unita_organizzativa uo ON uo.cd_unita_organizzativa = af.cd_uo_origine
+LEFT JOIN fattura_passiva_riga frg ON frg.cd_cds = af.CD_CDS_FT_PASSIVA AND frg.cd_unita_organizzativa = af.CD_UO_FT_PASSIVA AND frg.esercizio = af.esercizio AND frg.pg_fattura_passiva = af.pg_fattura_passiva
+LEFT JOIN voce_iva vi ON vi.cd_voce_iva = frg.cd_voce_iva
+LEFT JOIN anagrafico anag ON anag.cd_anag = ter.cd_anag
+LEFT JOIN comune com ON com.pg_comune = ter.pg_comune_sede
+LEFT JOIN anagrafico anag2 ON anag2.cd_anag = ter2.cd_anag
+LEFT JOIN comune com2 ON com2.pg_comune = ter2.pg_comune_sede
+where af.esercizio = $P{esercizio}
+and af.cd_uo_origine =  $P{cd_uo_origine}
+and af.PG_AUTOFATTURA = $P{pg_autofattura}
 order by progressivo_riga]]>
 	</queryString>
-	<field name="DS_CD_TERZO" class="java.lang.String"/>
-	<field name="DS_CD_UO_ORIGINE" class="java.lang.String"/>
-	<field name="CD_UNITA_ORGANIZZATIVA" class="java.lang.String"/>
-	<field name="DS_UNITA_ORGANIZZATIVA" class="java.lang.String"/>
-	<field name="CD_PROPRIO_UNITA" class="java.lang.String"/>
-	<field name="CD_TIPO_UNITA" class="java.lang.String"/>
-	<field name="FL_CDS" class="java.lang.String"/>
-	<field name="FL_UO_CDS" class="java.lang.String"/>
-	<field name="FL_RUBRICA" class="java.lang.String"/>
-	<field name="LIVELLO" class="java.math.BigDecimal"/>
-	<field name="PRC_COPERTURA_OBBLIG_2" class="java.math.BigDecimal"/>
-	<field name="PRC_COPERTURA_OBBLIG_3" class="java.math.BigDecimal"/>
-	<field name="CD_RESPONSABILE" class="java.math.BigDecimal"/>
-	<field name="CD_RESPONSABILE_AMM" class="java.math.BigDecimal"/>
-	<field name="FL_PRESIDENTE_AREA" class="java.lang.String"/>
-	<field name="DACR" class="java.sql.Timestamp"/>
-	<field name="UTCR" class="java.lang.String"/>
-	<field name="DUVA" class="java.sql.Timestamp"/>
-	<field name="UTUV" class="java.lang.String"/>
-	<field name="PG_VER_REC" class="java.math.BigDecimal"/>
-	<field name="CD_UNITA_PADRE" class="java.lang.String"/>
-	<field name="CD_AREA_RICERCA" class="java.lang.String"/>
-	<field name="ESERCIZIO_FINE" class="java.math.BigDecimal"/>
-	<field name="ESERCIZIO_INIZIO" class="java.math.BigDecimal"/>
-	<field name="CD_AREA_SCIENTIFICA" class="java.lang.String"/>
-	<field name="ID_FUNZIONE_PUBBLICA" class="java.lang.String"/>
-	<field name="CODICEAOOIPA" class="java.lang.String"/>
-	<field name="CD_CDS" class="java.lang.String"/>
-	<field name="ESERCIZIO" class="java.math.BigDecimal"/>
-	<field name="PG_FATTURA_ATTIVA" class="java.math.BigDecimal"/>
-	<field name="CD_CDS_ORIGINE" class="java.lang.String"/>
-	<field name="CD_UO_ORIGINE" class="java.lang.String"/>
-	<field name="CD_TIPO_SEZIONALE" class="java.lang.String"/>
-	<field name="TI_FATTURA" class="java.lang.String"/>
-	<field name="PROTOCOLLO_IVA" class="java.math.BigDecimal"/>
-	<field name="PROTOCOLLO_IVA_GENERALE" class="java.math.BigDecimal"/>
-	<field name="DT_REGISTRAZIONE" class="java.sql.Timestamp"/>
-	<field name="DT_EMISSIONE" class="java.sql.Timestamp"/>
-	<field name="DT_SCADENZA" class="java.sql.Timestamp"/>
-	<field name="DT_CANCELLAZIONE" class="java.sql.Timestamp"/>
-	<field name="TI_CAUSALE_EMISSIONE" class="java.lang.String"/>
-	<field name="FL_LIQUIDAZIONE_DIFFERITA" class="java.lang.String"/>
-	<field name="DS_FATTURA_ATTIVA" class="java.lang.String"/>
-	<field name="FL_INTRA_UE" class="java.lang.String"/>
-	<field name="FL_EXTRA_UE" class="java.lang.String"/>
-	<field name="FL_SAN_MARINO" class="java.lang.String"/>
-	<field name="CD_TERZO" class="java.math.BigDecimal"/>
-	<field name="CD_TERZO_UO_CDS" class="java.math.BigDecimal"/>
-	<field name="RAGIONE_SOCIALE" class="java.lang.String"/>
-	<field name="NOME" class="java.lang.String"/>
-	<field name="COGNOME" class="java.lang.String"/>
-	<field name="CODICE_FISCALE" class="java.lang.String"/>
-	<field name="PARTITA_IVA" class="java.lang.String"/>
-	<field name="CD_TERMINI_PAG" class="java.lang.String"/>
-	<field name="CD_TERMINI_PAG_UO_CDS" class="java.lang.String"/>
-	<field name="PG_BANCA" class="java.math.BigDecimal"/>
-	<field name="PG_BANCA_UO_CDS" class="java.math.BigDecimal"/>
-	<field name="CD_MODALITA_PAG" class="java.lang.String"/>
-	<field name="CD_MODALITA_PAG_UO_CDS" class="java.lang.String"/>
-	<field name="IM_TOTALE_IMPONIBILE" class="java.math.BigDecimal"/>
-	<field name="IM_TOTALE_IVA" class="java.math.BigDecimal"/>
-	<field name="IM_TOTALE_FATTURA" class="java.math.BigDecimal"/>
-	<field name="CD_DIVISA" class="java.lang.String"/>
-	<field name="CAMBIO" class="java.math.BigDecimal"/>
-	<field name="STATO_COFI" class="java.lang.String"/>
-	<field name="STATO_COGE" class="java.lang.String"/>
-	<field name="NOTE" class="java.lang.String"/>
-	<field name="DT_DA_COMPETENZA_COGE" class="java.sql.Timestamp"/>
-	<field name="DT_A_COMPETENZA_COGE" class="java.sql.Timestamp"/>
-	<field name="FL_STAMPA" class="java.lang.String"/>
-	<field name="RIFERIMENTO_ORDINE" class="java.lang.String"/>
-	<field name="STATO_COAN" class="java.lang.String"/>
-	<field name="TI_ASSOCIATO_MANREV" class="java.lang.String"/>
-	<field name="FL_CONGELATA" class="java.lang.String"/>
-	<field name="PG_FATTURA_ESTERNO" class="java.math.BigDecimal"/>
-	<field name="TI_BENE_SERVIZIO" class="java.lang.String"/>
-	<field name="FL_PAGAMENTO_ANTICIPATO" class="java.lang.String"/>
-	<field name="CODICE_UNIVOCO_UFFICIO_IPA" class="java.lang.String"/>
-	<field name="CODICE_INVIO_SDI" class="java.lang.String"/>
-	<field name="STATO_INVIO_SDI" class="java.lang.String"/>
-	<field name="NOTE_INVIO_SDI" class="java.lang.String"/>
-	<field name="NC_ANNULLO_SDI" class="java.lang.String"/>
-	<field name="PROGR_UNIVOCO_ANNO" class="java.math.BigDecimal"/>
-	<field name="DT_CONSEGNA_SDI" class="java.sql.Timestamp"/>
-	<field name="NOME_FILE_INVIO_SDI" class="java.lang.String"/>
-	<field name="CODICE_DESTINATARIO_FATT" class="java.lang.String"/>
-	<field name="MAIL_FATTURA_ELETTRONICA" class="java.lang.String"/>
-	<field name="PEC_FATTURA_ELETTRONICA" class="java.lang.String"/>
-	<field name="FL_FATTURA_ELETTRONICA" class="java.lang.String"/>
-	<field name="DT_RICEZIONE_SDI" class="java.sql.Timestamp"/>
-	<field name="FL_ORDINE_ELETTRONICO" class="java.lang.String"/>
-	<field name="DT_ORDINE" class="java.sql.Timestamp"/>
-	<field name="PROGRESSIVO_RIGA" class="java.math.BigDecimal"/>
-	<field name="CD_TARIFFARIO" class="java.lang.String"/>
-	<field name="DS_RIGA_FATTURA" class="java.lang.String"/>
-	<field name="PREZZO_UNITARIO" class="java.math.BigDecimal"/>
-	<field name="QUANTITA" class="java.math.BigDecimal"/>
-	<field name="IM_TOTALE_DIVISA" class="java.math.BigDecimal"/>
-	<field name="IM_IMPONIBILE" class="java.math.BigDecimal"/>
-	<field name="CD_VOCE_IVA" class="java.lang.String"/>
-	<field name="IM_IVA" class="java.math.BigDecimal"/>
-	<field name="FL_IVA_FORZATA" class="java.lang.String"/>
-	<field name="IM_DIPONIBILE_NC" class="java.math.BigDecimal"/>
-	<field name="CD_CDS_ACCERTAMENTO" class="java.lang.String"/>
-	<field name="ESERCIZIO_ACCERTAMENTO" class="java.math.BigDecimal"/>
-	<field name="PG_ACCERTAMENTO" class="java.math.BigDecimal"/>
-	<field name="PG_ACCERTAMENTO_SCADENZARIO" class="java.math.BigDecimal"/>
-	<field name="CD_CDS_OBBLIGAZIONE" class="java.lang.String"/>
-	<field name="ESERCIZIO_OBBLIGAZIONE" class="java.math.BigDecimal"/>
-	<field name="PG_OBBLIGAZIONE" class="java.math.BigDecimal"/>
-	<field name="PG_OBBLIGAZIONE_SCADENZARIO" class="java.math.BigDecimal"/>
-	<field name="CD_CDS_ASSNCNA_FIN" class="java.lang.String"/>
-	<field name="CD_UO_ASSNCNA_FIN" class="java.lang.String"/>
-	<field name="ESERCIZIO_ASSNCNA_FIN" class="java.math.BigDecimal"/>
-	<field name="PG_FATTURA_ASSNCNA_FIN" class="java.math.BigDecimal"/>
-	<field name="PG_RIGA_ASSNCNA_FIN" class="java.math.BigDecimal"/>
-	<field name="ESERCIZIO_ORI_OBBLIGAZIONE" class="java.math.BigDecimal"/>
-	<field name="ESERCIZIO_ORI_ACCERTAMENTO" class="java.math.BigDecimal"/>
-	<field name="DATA_ESIGIBILITA_IVA" class="java.sql.Timestamp"/>
-	<field name="CD_BENE_SERVIZIO" class="java.lang.String"/>
-	<field name="PG_TROVATO" class="java.math.BigDecimal"/>
-	<field name="DS_VOCE_IVA" class="java.lang.String"/>
-	<field name="DS_MODALITA_PAG_UO_CDS" class="java.lang.String"/>
-	<field name="TI_PAGAMENTO" class="java.lang.String"/>
-	<field name="ESERCIZIO_CONTRATTO" class="java.math.BigDecimal"/>
-	<field name="PG_CONTRATTO" class="java.math.BigDecimal"/>
-	<field name="CD_CIG_FATTURA_ATTIVA" class="java.lang.String"/>
-	<field name="CD_CUP" class="java.lang.String"/>
-	<field name="SPLIT" class="java.lang.String"/>
-	<field name="CODFIS_PIVA" class="java.lang.String"/>
-	<field name="INDIRIZZO" class="java.lang.String"/>
-	<field name="INDIRIZZO_CDS_UO" class="java.lang.String"/>
-	<field name="DATI_FISCALI_CDS_UO" class="java.lang.String"/>
-	<field name="NUMERO_FATTURA" class="java.lang.String"/>
-	<field name="MOTIVO_ASSOLVIMENTO" class="java.lang.String"/>
-	<field name="CONTA_ESISTE_BOLLO" class="java.math.BigDecimal"/>
+	<field name="DS_CD_TERZO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DS_CD_TERZO"/>
+	</field>
+	<field name="DS_CD_UO_ORIGINE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DS_CD_UO_ORIGINE"/>
+	</field>
+	<field name="CD_UNITA_ORGANIZZATIVA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_UNITA_ORGANIZZATIVA"/>
+	</field>
+	<field name="DS_UNITA_ORGANIZZATIVA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DS_UNITA_ORGANIZZATIVA"/>
+	</field>
+	<field name="CD_PROPRIO_UNITA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_PROPRIO_UNITA"/>
+	</field>
+	<field name="CD_TIPO_UNITA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_TIPO_UNITA"/>
+	</field>
+	<field name="FL_CDS" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="FL_CDS"/>
+	</field>
+	<field name="FL_UO_CDS" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="FL_UO_CDS"/>
+	</field>
+	<field name="FL_RUBRICA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="FL_RUBRICA"/>
+	</field>
+	<field name="LIVELLO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="LIVELLO"/>
+	</field>
+	<field name="PRC_COPERTURA_OBBLIG_2" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PRC_COPERTURA_OBBLIG_2"/>
+	</field>
+	<field name="PRC_COPERTURA_OBBLIG_3" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PRC_COPERTURA_OBBLIG_3"/>
+	</field>
+	<field name="CD_RESPONSABILE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="CD_RESPONSABILE"/>
+	</field>
+	<field name="CD_RESPONSABILE_AMM" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="CD_RESPONSABILE_AMM"/>
+	</field>
+	<field name="FL_PRESIDENTE_AREA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="FL_PRESIDENTE_AREA"/>
+	</field>
+	<field name="DACR" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DACR"/>
+	</field>
+	<field name="UTCR" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="UTCR"/>
+	</field>
+	<field name="DUVA" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DUVA"/>
+	</field>
+	<field name="UTUV" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="UTUV"/>
+	</field>
+	<field name="PG_VER_REC" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PG_VER_REC"/>
+	</field>
+	<field name="CD_UNITA_PADRE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_UNITA_PADRE"/>
+	</field>
+	<field name="CD_AREA_RICERCA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_AREA_RICERCA"/>
+	</field>
+	<field name="ESERCIZIO_FINE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ESERCIZIO_FINE"/>
+	</field>
+	<field name="ESERCIZIO_INIZIO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ESERCIZIO_INIZIO"/>
+	</field>
+	<field name="CD_AREA_SCIENTIFICA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_AREA_SCIENTIFICA"/>
+	</field>
+	<field name="ID_FUNZIONE_PUBBLICA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ID_FUNZIONE_PUBBLICA"/>
+	</field>
+	<field name="CODICEAOOIPA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODICEAOOIPA"/>
+	</field>
+	<field name="CD_CDS" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_CDS"/>
+	</field>
+	<field name="COLUMN_29" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_UNITA_ORGANIZZATIVA"/>
+	</field>
+	<field name="ESERCIZIO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ESERCIZIO"/>
+	</field>
+	<field name="PG_AUTOFATTURA" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PG_AUTOFATTURA"/>
+	</field>
+	<field name="CD_CDS_ORIGINE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_CDS_ORIGINE"/>
+	</field>
+	<field name="CD_UO_ORIGINE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_UO_ORIGINE"/>
+	</field>
+	<field name="CD_TIPO_SEZIONALE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_TIPO_SEZIONALE"/>
+	</field>
+	<field name="TI_FATTURA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TI_FATTURA"/>
+	</field>
+	<field name="PROTOCOLLO_IVA" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PROTOCOLLO_IVA"/>
+	</field>
+	<field name="PROTOCOLLO_IVA_GENERALE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PROTOCOLLO_IVA_GENERALE"/>
+	</field>
+	<field name="DT_REGISTRAZIONE" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DT_REGISTRAZIONE"/>
+	</field>
+	<field name="TI_ISTITUZ_COMMERC" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TI_ISTITUZ_COMMERC"/>
+	</field>
+	<field name="FL_INTRA_UE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="FL_INTRA_UE"/>
+	</field>
+	<field name="FL_SAN_MARINO_SENZA_IVA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="FL_SAN_MARINO_SENZA_IVA"/>
+	</field>
+	<field name="FL_AUTOFATTURA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="FL_AUTOFATTURA"/>
+	</field>
+	<field name="FL_LIQUIDAZIONE_DIFFERITA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="FL_LIQUIDAZIONE_DIFFERITA"/>
+	</field>
+	<field name="DATA_ESIGIBILITA_IVA" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DATA_ESIGIBILITA_IVA"/>
+	</field>
+	<field name="STATO_COFI" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="STATO_COFI"/>
+	</field>
+	<field name="STATO_COGE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="STATO_COGE"/>
+	</field>
+	<field name="CD_CDS_FT_PASSIVA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_CDS_FT_PASSIVA"/>
+	</field>
+	<field name="CD_UO_FT_PASSIVA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_UO_FT_PASSIVA"/>
+	</field>
+	<field name="PG_FATTURA_PASSIVA" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PG_FATTURA_PASSIVA"/>
+	</field>
+	<field name="COLUMN_50" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="UTCR"/>
+	</field>
+	<field name="COLUMN_51" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DACR"/>
+	</field>
+	<field name="COLUMN_52" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="UTUV"/>
+	</field>
+	<field name="COLUMN_53" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DUVA"/>
+	</field>
+	<field name="COLUMN_54" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PG_VER_REC"/>
+	</field>
+	<field name="FL_SPLIT_PAYMENT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="FL_SPLIT_PAYMENT"/>
+	</field>
+	<field name="CODICE_UNIVOCO_UFFICIO_IPA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODICE_UNIVOCO_UFFICIO_IPA"/>
+	</field>
+	<field name="CODICE_INVIO_SDI" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODICE_INVIO_SDI"/>
+	</field>
+	<field name="STATO_INVIO_SDI" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="STATO_INVIO_SDI"/>
+	</field>
+	<field name="NOTE_INVIO_SDI" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NOTE_INVIO_SDI"/>
+	</field>
+	<field name="NC_ANNULLO_SDI" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NC_ANNULLO_SDI"/>
+	</field>
+	<field name="PROGR_UNIVOCO_ANNO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PROGR_UNIVOCO_ANNO"/>
+	</field>
+	<field name="DT_CONSEGNA_SDI" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DT_CONSEGNA_SDI"/>
+	</field>
+	<field name="DT_RICEZIONE_SDI" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DT_RICEZIONE_SDI"/>
+	</field>
+	<field name="NOME_FILE_INVIO_SDI" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NOME_FILE_INVIO_SDI"/>
+	</field>
+	<field name="CODICE_DESTINATARIO_FATT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODICE_DESTINATARIO_FATT"/>
+	</field>
+	<field name="MAIL_FATTURA_ELETTRONICA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="MAIL_FATTURA_ELETTRONICA"/>
+	</field>
+	<field name="PEC_FATTURA_ELETTRONICA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="PEC_FATTURA_ELETTRONICA"/>
+	</field>
+	<field name="FL_FATTURA_ELETTRONICA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="FL_FATTURA_ELETTRONICA"/>
+	</field>
+	<field name="FL_TERZO_ENTE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="FL_TERZO_ENTE"/>
+	</field>
+	<field name="COLUMN_70" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_CDS"/>
+	</field>
+	<field name="COLUMN_71" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_UNITA_ORGANIZZATIVA"/>
+	</field>
+	<field name="COLUMN_72" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ESERCIZIO"/>
+	</field>
+	<field name="COLUMN_73" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PG_FATTURA_PASSIVA"/>
+	</field>
+	<field name="PROGRESSIVO_RIGA" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PROGRESSIVO_RIGA"/>
+	</field>
+	<field name="COLUMN_75" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TI_ISTITUZ_COMMERC"/>
+	</field>
+	<field name="CD_BENE_SERVIZIO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_BENE_SERVIZIO"/>
+	</field>
+	<field name="DS_RIGA_FATTURA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DS_RIGA_FATTURA"/>
+	</field>
+	<field name="PREZZO_UNITARIO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PREZZO_UNITARIO"/>
+	</field>
+	<field name="QUANTITA" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="QUANTITA"/>
+	</field>
+	<field name="IM_TOTALE_DIVISA" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="IM_TOTALE_DIVISA"/>
+	</field>
+	<field name="IM_IMPONIBILE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="IM_IMPONIBILE"/>
+	</field>
+	<field name="CD_VOCE_IVA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_VOCE_IVA"/>
+	</field>
+	<field name="FL_IVA_FORZATA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="FL_IVA_FORZATA"/>
+	</field>
+	<field name="IM_IVA" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="IM_IVA"/>
+	</field>
+	<field name="IM_DIPONIBILE_NC" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="IM_DIPONIBILE_NC"/>
+	</field>
+	<field name="COLUMN_86" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="STATO_COFI"/>
+	</field>
+	<field name="DT_DA_COMPETENZA_COGE" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DT_DA_COMPETENZA_COGE"/>
+	</field>
+	<field name="DT_A_COMPETENZA_COGE" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DT_A_COMPETENZA_COGE"/>
+	</field>
+	<field name="DT_CANCELLAZIONE" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DT_CANCELLAZIONE"/>
+	</field>
+	<field name="CD_CDS_OBBLIGAZIONE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_CDS_OBBLIGAZIONE"/>
+	</field>
+	<field name="ESERCIZIO_OBBLIGAZIONE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ESERCIZIO_OBBLIGAZIONE"/>
+	</field>
+	<field name="PG_OBBLIGAZIONE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PG_OBBLIGAZIONE"/>
+	</field>
+	<field name="PG_OBBLIGAZIONE_SCADENZARIO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PG_OBBLIGAZIONE_SCADENZARIO"/>
+	</field>
+	<field name="CD_CDS_ACCERTAMENTO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_CDS_ACCERTAMENTO"/>
+	</field>
+	<field name="ESERCIZIO_ACCERTAMENTO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ESERCIZIO_ACCERTAMENTO"/>
+	</field>
+	<field name="PG_ACCERTAMENTO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PG_ACCERTAMENTO"/>
+	</field>
+	<field name="PG_ACCERTAMENTO_SCADENZARIO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PG_ACCERTAMENTO_SCADENZARIO"/>
+	</field>
+	<field name="COLUMN_98" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DACR"/>
+	</field>
+	<field name="COLUMN_99" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="UTCR"/>
+	</field>
+	<field name="COLUMN_100" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DUVA"/>
+	</field>
+	<field name="COLUMN_101" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="UTUV"/>
+	</field>
+	<field name="COLUMN_102" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PG_VER_REC"/>
+	</field>
+	<field name="CD_CDS_ASSNCNA_FIN" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_CDS_ASSNCNA_FIN"/>
+	</field>
+	<field name="CD_UO_ASSNCNA_FIN" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_UO_ASSNCNA_FIN"/>
+	</field>
+	<field name="ESERCIZIO_ASSNCNA_FIN" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ESERCIZIO_ASSNCNA_FIN"/>
+	</field>
+	<field name="PG_FATTURA_ASSNCNA_FIN" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PG_FATTURA_ASSNCNA_FIN"/>
+	</field>
+	<field name="PG_RIGA_ASSNCNA_FIN" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PG_RIGA_ASSNCNA_FIN"/>
+	</field>
+	<field name="CD_CDS_ASSNCNA_ECO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_CDS_ASSNCNA_ECO"/>
+	</field>
+	<field name="CD_UO_ASSNCNA_ECO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_UO_ASSNCNA_ECO"/>
+	</field>
+	<field name="ESERCIZIO_ASSNCNA_ECO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ESERCIZIO_ASSNCNA_ECO"/>
+	</field>
+	<field name="PG_FATTURA_ASSNCNA_ECO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PG_FATTURA_ASSNCNA_ECO"/>
+	</field>
+	<field name="PG_RIGA_ASSNCNA_ECO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PG_RIGA_ASSNCNA_ECO"/>
+	</field>
+	<field name="TI_ASSOCIATO_MANREV" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TI_ASSOCIATO_MANREV"/>
+	</field>
+	<field name="ESERCIZIO_ORI_OBBLIGAZIONE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ESERCIZIO_ORI_OBBLIGAZIONE"/>
+	</field>
+	<field name="ESERCIZIO_ORI_ACCERTAMENTO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ESERCIZIO_ORI_ACCERTAMENTO"/>
+	</field>
+	<field name="CD_TERZO_CESSIONARIO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="CD_TERZO_CESSIONARIO"/>
+	</field>
+	<field name="CD_TERZO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="CD_TERZO"/>
+	</field>
+	<field name="CD_TERMINI_PAG" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_TERMINI_PAG"/>
+	</field>
+	<field name="PG_BANCA" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PG_BANCA"/>
+	</field>
+	<field name="CD_MODALITA_PAG" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_MODALITA_PAG"/>
+	</field>
+	<field name="COLUMN_121" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DATA_ESIGIBILITA_IVA"/>
+	</field>
+	<field name="PG_TROVATO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PG_TROVATO"/>
+	</field>
+	<field name="CD_CIG" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_CIG"/>
+	</field>
+	<field name="MOTIVO_ASSENZA_CIG" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="MOTIVO_ASSENZA_CIG"/>
+	</field>
+	<field name="COLUMN_125" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CD_VOCE_IVA"/>
+	</field>
+	<field name="DS_VOCE_IVA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DS_VOCE_IVA"/>
+	</field>
+	<field name="DS_MODALITA_PAG_UO_CDS" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DS_MODALITA_PAG_UO_CDS"/>
+	</field>
+	<field name="CODFIS_PIVA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODFIS_PIVA"/>
+	</field>
+	<field name="INDIRIZZO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="INDIRIZZO"/>
+	</field>
+	<field name="INDIRIZZO_CDS_UO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="INDIRIZZO_CDS_UO"/>
+	</field>
+	<field name="DATI_FISCALI_CDS_UO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DATI_FISCALI_CDS_UO"/>
+	</field>
+	<field name="NUMERO_FATTURA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NUMERO_FATTURA"/>
+	</field>
+	<field name="IM_TOTALE_IVA" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="IM_TOTALE_IVA"/>
+	</field>
+	<field name="IM_TOTALE_IMPONIBILE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="IM_TOTALE_IMPONIBILE"/>
+	</field>
+	<field name="IM_TOTALE_FATTURA" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="IM_TOTALE_FATTURA"/>
+	</field>
 	<group name="Numero_Fattura">
-		<groupExpression><![CDATA[$F{PG_FATTURA_ATTIVA}]]></groupExpression>
+		<groupExpression><![CDATA[$F{PG_AUTOFATTURA}]]></groupExpression>
 		<groupHeader>
 			<band height="263">
 				<staticText>
@@ -221,7 +488,7 @@ order by progressivo_riga]]>
 					<reportElement style="TNRG10" x="3" y="67" width="64" height="14" uuid="480d1053-12bd-4eef-9f1a-7d3beaa83a44"/>
 					<text><![CDATA[Destinatario:]]></text>
 				</staticText>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement style="TNR10" x="68" y="67" width="486" height="14" isRemoveLineWhenBlank="true" uuid="584cc196-9416-4d1a-862a-65d572aa3b51"/>
 					<textFieldExpression><![CDATA[$F{CD_TERZO} + " - " +$F{DS_CD_TERZO}]]></textFieldExpression>
 				</textField>
@@ -245,27 +512,19 @@ order by progressivo_riga]]>
 					<reportElement style="TNRG10" x="3" y="174" width="83" height="14" uuid="045a180c-1546-4400-a800-626a37d5737a"/>
 					<text><![CDATA[Data:]]></text>
 				</staticText>
-				<staticText>
-					<reportElement style="TNRG10" x="286" y="138" width="98" height="14" uuid="7b26872a-6b21-44bc-a485-25266a5b39a5"/>
-					<text><![CDATA[Riferimento Ordine:]]></text>
-				</staticText>
 				<line>
 					<reportElement x="1" y="132" width="554" height="1" uuid="7f51e4c4-90bf-4842-8e78-73c980db3cc8"/>
 				</line>
 				<line>
 					<reportElement x="1" y="228" width="554" height="1" uuid="7834a03d-1664-41ba-9a2c-94bd1224906d"/>
 				</line>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement style="TNR10" x="110" y="158" width="176" height="14" isRemoveLineWhenBlank="true" uuid="40d0d305-1648-4143-b063-c8ed2080eb1d"/>
 					<textFieldExpression><![CDATA[$F{NUMERO_FATTURA}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" pattern="dd/MM/yyyy" isBlankWhenNull="true">
 					<reportElement style="TNR10" x="110" y="174" width="176" height="14" isRemoveLineWhenBlank="true" uuid="8775c333-8934-4a36-8dbc-b7f3fc643722"/>
-					<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{DT_EMISSIONE})]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement style="TNR10" x="388" y="138" width="166" height="28" isRemoveLineWhenBlank="true" uuid="6b7fba55-cb32-48da-b5df-66c265e5e375"/>
-					<textFieldExpression><![CDATA[$F{RIFERIMENTO_ORDINE}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{DT_REGISTRAZIONE})]]></textFieldExpression>
 				</textField>
 				<line>
 					<reportElement x="0" y="133" width="1" height="95" uuid="be52ef50-b9ac-4d28-a42a-bcca173fb87c"/>
@@ -277,7 +536,7 @@ order by progressivo_riga]]>
 					<reportElement style="TNRGC12" x="3" y="245" width="150" height="15" uuid="81b3ce6b-4374-435d-a4f6-a4e2e88d7aca"/>
 					<text><![CDATA[Dettagli Fattura]]></text>
 				</staticText>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement style="TNR10" x="68" y="115" width="484" height="14" isRemoveLineWhenBlank="true" uuid="6f6c08f9-e8d8-4cf9-a64d-b9fc221251e7"/>
 					<textFieldExpression><![CDATA[$F{DS_MODALITA_PAG_UO_CDS}]]></textFieldExpression>
 				</textField>
@@ -297,45 +556,43 @@ order by progressivo_riga]]>
 					<reportElement style="TNR10" x="286" y="210" width="127" height="14" uuid="91168a7e-96d0-47a8-8596-ffbd92e49c7b"/>
 					<text><![CDATA[(Per fatturazione elettronica)]]></text>
 				</staticText>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement style="TNR10" x="143" y="194" width="123" height="14" isRemoveLineWhenBlank="true" uuid="224442a2-88a7-4423-9008-82426fd97abd"/>
-					<textFieldExpression><![CDATA[$F{PG_FATTURA_ATTIVA}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{PG_AUTOFATTURA}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" pattern="dd/MM/yyyy" isBlankWhenNull="true">
 					<reportElement style="TNR10" x="425" y="194" width="129" height="14" isRemoveLineWhenBlank="true" uuid="f098f82c-9e0c-4a2f-a599-1c2df0b2bb83"/>
 					<textFieldExpression><![CDATA[$F{DT_CONSEGNA_SDI}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" pattern="dd/MM/yyyy" isBlankWhenNull="true">
 					<reportElement style="TNR10" x="143" y="210" width="123" height="14" isRemoveLineWhenBlank="true" uuid="fb62bae4-4f4c-431d-9b7c-1b2d78612cd7"/>
 					<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{DT_REGISTRAZIONE})]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement style="TNR10" x="68" y="4" width="486" height="14" isRemoveLineWhenBlank="true" uuid="cf40d07b-65d4-4260-a3db-db6851546c60"/>
 					<textFieldExpression><![CDATA[$F{CD_UO_ORIGINE}+ " - " +$F{DS_CD_UO_ORIGINE}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement style="TNRG10" x="110" y="138" width="156" height="14" isRemoveLineWhenBlank="true" uuid="e6fc1fec-1edf-49a0-8618-a46cd49c2028"/>
-					<textFieldExpression><![CDATA[($F{TI_FATTURA}.equals("F")?"Fattura":
-    ($F{TI_FATTURA}.equals("C")?"Nota di credito":
-        ($F{TI_FATTURA}.equals("D")?"Nota di debito":"")))]]></textFieldExpression>
+					<textFieldExpression><![CDATA["Autofattura"]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement style="TNRG10" x="3" y="138" width="100" height="14" uuid="4feac9a1-116c-452c-aadf-e6d2eede9b67"/>
 					<text><![CDATA[Tipo documento:]]></text>
 				</staticText>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement style="TNR10" x="68" y="97" width="486" height="14" isRemoveLineWhenBlank="true" uuid="68061b56-0614-4996-bc03-b0140465d3b5"/>
 					<textFieldExpression><![CDATA[$F{CODFIS_PIVA}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement style="TNR10" x="68" y="82" width="486" height="14" isRemoveLineWhenBlank="true" uuid="075d6ae9-250d-41fd-be7b-ad1faf5b6b52"/>
 					<textFieldExpression><![CDATA[$F{INDIRIZZO}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement style="TNR10" x="68" y="33" width="486" height="14" isRemoveLineWhenBlank="true" uuid="a88e57c7-4cfa-4783-94b7-140eb06c2c61"/>
 					<textFieldExpression><![CDATA[$F{INDIRIZZO_CDS_UO}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement style="TNR10" x="68" y="47" width="486" height="14" isRemoveLineWhenBlank="true" uuid="ef92e9e7-2ffe-40ab-a085-bd1d97e0174c"/>
 					<textFieldExpression><![CDATA[$F{DATI_FISCALI_CDS_UO}]]></textFieldExpression>
 				</textField>
@@ -345,7 +602,7 @@ order by progressivo_riga]]>
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="125">
+			<band height="112">
 				<staticText>
 					<reportElement style="TNRGC12" x="3" y="18" width="100" height="15" uuid="cf9d8963-7295-4c2d-875a-618f0e960070"/>
 					<text><![CDATA[Totali]]></text>
@@ -362,17 +619,17 @@ order by progressivo_riga]]>
 					<reportElement style="TNRG10" x="3" y="85" width="98" height="14" uuid="53f8064e-b140-4c87-9285-3aedc1f49d25"/>
 					<text><![CDATA[Totale Fattura:]]></text>
 				</staticText>
-				<textField isStretchWithOverflow="true" pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" pattern="¤ #,##0.00" isBlankWhenNull="true">
 					<reportElement style="TNR10" x="110" y="60" width="84" height="14" isRemoveLineWhenBlank="true" uuid="47f1520e-db98-498d-ae75-973d0f060ed4"/>
 					<textElement textAlignment="Right"/>
 					<textFieldExpression><![CDATA[$F{IM_TOTALE_IVA}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" pattern="¤ #,##0.00" isBlankWhenNull="true">
 					<reportElement style="TNR10" x="110" y="85" width="84" height="14" isRemoveLineWhenBlank="true" uuid="c68c5661-2768-4cd5-8ea7-257a7f63c7fe"/>
 					<textElement textAlignment="Right"/>
 					<textFieldExpression><![CDATA[$F{IM_TOTALE_FATTURA}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" pattern="¤ #,##0.00" isBlankWhenNull="true">
 					<reportElement style="TNR10" x="110" y="44" width="84" height="14" isRemoveLineWhenBlank="true" uuid="4f2868d9-7677-40af-813e-c9dc0727c457"/>
 					<textElement textAlignment="Right"/>
 					<textFieldExpression><![CDATA[$F{IM_TOTALE_IMPONIBILE}]]></textFieldExpression>
@@ -401,22 +658,6 @@ order by progressivo_riga]]>
 				<line>
 					<reportElement x="0" y="82" width="1" height="20" uuid="1b84f6a3-7a9f-41f4-91c1-4ae32adaff9e"/>
 				</line>
-				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
-					<reportElement key="textField-79" style="TNRG11" positionType="Float" x="200" y="59" width="131" height="14" uuid="a2046d8f-b51e-4854-a8c3-19cd35de073d"/>
-					<box>
-						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<bottomPen lineWidth="0.0" lineColor="#000000"/>
-						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					</box>
-					<textFieldExpression><![CDATA[($F{SPLIT}.equals("Y"))?"Scissione dei pagamenti":""]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
-					<reportElement style="TNR10" positionType="Float" x="3" y="108" width="552" height="14" isRemoveLineWhenBlank="true" uuid="1c6d2120-64db-4306-bcc8-7d69c69639e1">
-						<printWhenExpression><![CDATA[$F{CONTA_ESISTE_BOLLO}.compareTo(BigDecimal.ZERO) > 0]]></printWhenExpression>
-					</reportElement>
-					<textFieldExpression><![CDATA[$F{MOTIVO_ASSOLVIMENTO}]]></textFieldExpression>
-				</textField>
 			</band>
 		</groupFooter>
 	</group>
@@ -444,7 +685,7 @@ order by progressivo_riga]]>
 				<reportElement style="TNRG10" x="3" y="7" width="75" height="38" uuid="1c90136d-0f25-4fe9-bb14-913af9363c57"/>
 				<text><![CDATA[Descrizione della prestazione:]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement style="TNR10" x="86" y="7" width="468" height="38" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="1f4a2831-7396-4293-89c9-731bb3d302c7"/>
 				<textFieldExpression><![CDATA[$F{DS_RIGA_FATTURA}]]></textFieldExpression>
 			</textField>
@@ -475,50 +716,24 @@ order by progressivo_riga]]>
 				<reportElement style="TNRG10" x="3" y="51" width="75" height="14" uuid="4d2b500e-5a72-49d1-9b5f-170fe6d1328b"/>
 				<text><![CDATA[Importo]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement style="TNR10" x="69" y="1" width="485" height="14" isRemoveLineWhenBlank="true" uuid="a1abc022-fb2b-4d4a-9a3e-da7d29cfea09"/>
 				<textFieldExpression><![CDATA[$F{CD_VOCE_IVA} + " - " +$F{DS_VOCE_IVA}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement style="TNR10" x="70" y="17" width="124" height="14" isRemoveLineWhenBlank="true" uuid="5186a895-1f5f-429d-8a45-ba8aa7752f42"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$F{QUANTITA}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" pattern="¤ #,##0.00" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" pattern="¤ #,##0.00" isBlankWhenNull="true">
 				<reportElement style="TNR10" x="78" y="33" width="116" height="14" isRemoveLineWhenBlank="true" uuid="19c13c7b-3254-45f3-bec0-34a2b8dc72c7"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$F{PREZZO_UNITARIO}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" pattern="¤ #,##0.00" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" pattern="¤ #,##0.00" isBlankWhenNull="true">
 				<reportElement style="TNR10" x="78" y="49" width="116" height="14" isRemoveLineWhenBlank="true" uuid="0d42cf33-f1ba-43f1-b017-440979e14d6b"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$F{IM_IMPONIBILE}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement style="TNRG10" x="266" y="17" width="104" height="14" uuid="c3077ff8-b147-4b4f-bc71-c0beeaacb719"/>
-				<text><![CDATA[Riferimento Contratto:]]></text>
-			</staticText>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement style="TNR10" x="378" y="17" width="157" height="14" isRemoveLineWhenBlank="true" uuid="d6c3d3f9-fc26-4bd3-97c3-b941e94c9737">
-					<printWhenExpression><![CDATA[new Boolean($F{ESERCIZIO_CONTRATTO}!=null)]]></printWhenExpression>
-				</reportElement>
-				<textFieldExpression><![CDATA[$F{ESERCIZIO_CONTRATTO}+ "/" +$F{PG_CONTRATTO}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement style="TNRG10" x="266" y="33" width="104" height="14" uuid="fabd90f0-0250-4503-888f-d4820d05466f"/>
-				<text><![CDATA[CIG:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="TNRG10" x="266" y="49" width="104" height="14" uuid="ab6121c5-f7ba-4acf-812c-1c28f1072263"/>
-				<text><![CDATA[CUP:]]></text>
-			</staticText>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement style="TNR10" x="378" y="33" width="157" height="14" isRemoveLineWhenBlank="true" uuid="ab5502d4-b0dc-430c-910f-c4d211f89e43"/>
-				<textFieldExpression><![CDATA[$F{CD_CIG_FATTURA_ATTIVA}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement style="TNR10" x="378" y="49" width="157" height="14" isRemoveLineWhenBlank="true" uuid="b6d7d3ac-4775-4294-88f4-9db5bb4e7480"/>
-				<textFieldExpression><![CDATA[$F{CD_CUP}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="1" y="64" width="554" height="1" uuid="351661ef-b58c-4379-ad06-eaf1f0a99a4b"/>
