@@ -54,7 +54,7 @@
 	<queryString>
 		<![CDATA[select prt_prog_com_mod.*, p.FL_NUOVO_PDg from prt_prog_com_mod, PARAMETRI_CNR p
 where prt_prog_com_mod.esercizio = $P{Esercizio}
-and prt_prog_com_mod.cdr = $P{cdr} 
+and prt_prog_com_mod.cdr = '133.000.000'
 and (($P{Progetto} != '*' AND cd_progetto = $P{Progetto}) OR  $P{Progetto} = '*')
 and (($P{Commessa} != '*' AND cd_commessa = $P{Commessa}) OR  $P{Commessa} = '*')
 and (( p.FL_NUOVO_PDg ='N'
