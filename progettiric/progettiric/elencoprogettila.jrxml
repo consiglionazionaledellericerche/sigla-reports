@@ -49,12 +49,12 @@
 		<defaultValueExpression><![CDATA["*"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="cdr" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["999.000.000"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["*"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[select prt_prog_com_mod.*, p.FL_NUOVO_PDg from prt_prog_com_mod, PARAMETRI_CNR p
 where prt_prog_com_mod.esercizio = $P{Esercizio}
-and prt_prog_com_mod.cdr = '133.000.000'
+and (($P{cdr} != '*' AND prt_prog_com_mod.cdr = $P{cdr}) OR  $P{cdr} = '*')
 and (($P{Progetto} != '*' AND cd_progetto = $P{Progetto}) OR  $P{Progetto} = '*')
 and (($P{Commessa} != '*' AND cd_commessa = $P{Commessa}) OR  $P{Commessa} = '*')
 and (( p.FL_NUOVO_PDg ='N'
