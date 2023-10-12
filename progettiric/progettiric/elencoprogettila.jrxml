@@ -48,9 +48,13 @@
 	<parameter name="Imp_Acc" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["*"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="cdr" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["999.000.000"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[select prt_prog_com_mod.*, p.FL_NUOVO_PDg from prt_prog_com_mod, PARAMETRI_CNR p
 where prt_prog_com_mod.esercizio = $P{Esercizio}
+and prt_prog_com_mod.cdr = $P{cdr} 
 and cd_progetto = decode ($P{Progetto},'*',cd_progetto,$P{Progetto})
 and cd_commessa = decode ($P{Commessa},'*',cd_commessa,$P{Commessa})
 and (( p.FL_NUOVO_PDg ='N'
