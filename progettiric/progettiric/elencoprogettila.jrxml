@@ -55,8 +55,8 @@
 		<![CDATA[select prt_prog_com_mod.*, p.FL_NUOVO_PDg from prt_prog_com_mod, PARAMETRI_CNR p
 where prt_prog_com_mod.esercizio = $P{Esercizio}
 and prt_prog_com_mod.cdr = $P{cdr} 
-and cd_progetto = decode ($P{Progetto},'*',cd_progetto,$P{Progetto})
-and cd_commessa = decode ($P{Commessa},'*',cd_commessa,$P{Commessa})
+and (($P{Progetto} != '*' AND cd_progetto = $P{Progetto}) OR  $P{Progetto} = '*')
+and (($P{Commessa} != '*' AND cd_commessa = $P{Commessa}) OR  $P{Commessa} = '*')
 and (( p.FL_NUOVO_PDg ='N'
 and cd_modulo = decode ($P{Modulo},'*',cd_modulo,$P{Modulo})) or
 p.FL_NUOVO_PDg ='Y')
