@@ -58,8 +58,7 @@ and prt_prog_com_mod.cdr = $P{cdr}
 and (($P{Progetto} != '*' AND cd_progetto = $P{Progetto}) OR  $P{Progetto} = '*')
 and (($P{Commessa} != '*' AND cd_commessa = $P{Commessa}) OR  $P{Commessa} = '*')
 and (( p.FL_NUOVO_PDg ='N'
-and cd_modulo = decode ($P{Modulo},'*',cd_modulo,$P{Modulo})) or
-p.FL_NUOVO_PDg ='Y')
+and (($P{Modulo} != '*' AND cd_modulo = $P{Modulo}) OR  $P{Modulo} = '*')) or p.FL_NUOVO_PDg ='Y')
 and flg_pdg = decode ($P{Pdg},'*',flg_pdg,$P{Pdg})
 and flg_impegno = decode ($P{Imp_Acc},'*',flg_impegno,$P{Imp_Acc})
 and prt_prog_com_mod.esercizio = p.esercizio]]>
