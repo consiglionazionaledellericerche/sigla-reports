@@ -59,8 +59,8 @@ and (($P{Progetto} != '*' AND cd_progetto = $P{Progetto}) OR  $P{Progetto} = '*'
 and (($P{Commessa} != '*' AND cd_commessa = $P{Commessa}) OR  $P{Commessa} = '*')
 and (( p.FL_NUOVO_PDg ='N'
 and (($P{Modulo} != '*' AND cd_modulo = $P{Modulo}) OR  $P{Modulo} = '*')) or p.FL_NUOVO_PDg ='Y')
-and flg_pdg = decode ($P{Pdg},'*',flg_pdg,$P{Pdg})
-and flg_impegno = decode ($P{Imp_Acc},'*',flg_impegno,$P{Imp_Acc})
+and (($P{Pdg} != '*' AND flg_pdg = $P{Pdg}) OR $P{Pdg} = '*')
+and (($P{Imp_Acc} != '*' AND flg_impegno = $P{Imp_Acc}) OR $P{Imp_Acc} = '*')
 and prt_prog_com_mod.esercizio = p.esercizio]]>
 	</queryString>
 	<field name="ESERCIZIO" class="java.math.BigDecimal"/>
