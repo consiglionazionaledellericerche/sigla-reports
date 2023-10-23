@@ -1330,20 +1330,6 @@
 					<subreportExpression><![CDATA[$P{DIR_SUBREPORT} + "report_laboratori_sub.jasper"]]></subreportExpression>
 				</subreport>
 				<staticText>
-					<reportElement style="bold" mode="Transparent" x="197" y="0" width="173" height="25" uuid="cb04094e-8f8d-446e-80f9-50e0252c7ee3"/>
-					<box>
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
-						<paragraph lineSpacing="Single"/>
-					</textElement>
-					<text><![CDATA[Istituto]]></text>
-				</staticText>
-				<staticText>
 					<reportElement style="bold" mode="Transparent" x="370" y="0" width="161" height="25" uuid="769f6187-c256-4466-af3e-884cde4860df"/>
 					<box>
 						<pen lineWidth="0.5"/>
@@ -1358,7 +1344,7 @@
 					<text><![CDATA[Project Role]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="bold" mode="Transparent" x="77" y="0" width="120" height="25" uuid="f7450d9f-023b-4e2e-8b55-9d5578b2fe76"/>
+					<reportElement style="bold" mode="Transparent" x="77" y="0" width="292" height="25" uuid="f7450d9f-023b-4e2e-8b55-9d5578b2fe76"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
