@@ -48,16 +48,19 @@
 	<parameter name="Imp_Acc" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["*"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="cdr" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["*"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[select prt_prog_com_mod.*, p.FL_NUOVO_PDg from prt_prog_com_mod, PARAMETRI_CNR p
 where prt_prog_com_mod.esercizio = $P{Esercizio}
-and cd_progetto = decode ($P{Progetto},'*',cd_progetto,$P{Progetto})
-and cd_commessa = decode ($P{Commessa},'*',cd_commessa,$P{Commessa})
+and (($P{cdr} != '*' AND prt_prog_com_mod.cdr = $P{cdr}) OR  $P{cdr} = '*')
+and (($P{Progetto} != '*' AND cd_progetto = $P{Progetto}) OR  $P{Progetto} = '*')
+and (($P{Commessa} != '*' AND cd_commessa = $P{Commessa}) OR  $P{Commessa} = '*')
 and (( p.FL_NUOVO_PDg ='N'
-and cd_modulo = decode ($P{Modulo},'*',cd_modulo,$P{Modulo})) or
-p.FL_NUOVO_PDg ='Y')
-and flg_pdg = decode ($P{Pdg},'*',flg_pdg,$P{Pdg})
-and flg_impegno = decode ($P{Imp_Acc},'*',flg_impegno,$P{Imp_Acc})
+and (($P{Modulo} != '*' AND cd_modulo = $P{Modulo}) OR  $P{Modulo} = '*')) or p.FL_NUOVO_PDg ='Y')
+and (($P{Pdg} != '*' AND flg_pdg = $P{Pdg}) OR $P{Pdg} = '*')
+and (($P{Imp_Acc} != '*' AND flg_impegno = $P{Imp_Acc}) OR $P{Imp_Acc} = '*')
 and prt_prog_com_mod.esercizio = p.esercizio]]>
 	</queryString>
 	<field name="ESERCIZIO" class="java.math.BigDecimal"/>

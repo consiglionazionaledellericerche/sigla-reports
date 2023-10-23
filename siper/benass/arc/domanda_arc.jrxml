@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final utlizzo versione della libreria JasperReports6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="domanda_attivita_ricreative" printOrder="Horizontal" pageWidth="595" pageHeight="842" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="28" bottomMargin="28" uuid="1fef2649-f473-4a10-91aa-4a65356a6720">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="ISO-8859-1"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="192"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="JsonDomandeArc"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<style name="SSH12" fontName="SansSerif" fontSize="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+	<style name="SSHG12" fontName="SansSerif" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+	<style name="SSHGC12" fontName="SansSerif" fontSize="12" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Oblique" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+	<style name="SSH10" isDefault="true" pdfFontName="Helvetica"/>
+	<style name="SSHG10" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SSHC10" fontName="SansSerif" isItalic="true" pdfFontName="Helvetica-Oblique"/>
+	<style name="SSHGC10" isBold="true" isItalic="true" pdfFontName="Helvetica-BoldOblique"/>
+	<style name="SSHC16" fontSize="16" isItalic="true" pdfFontName="Helvetica-Oblique"/>
+	<style name="SSH14" fontSize="14"/>
+	<style name="SSHG8" fontSize="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="TNRGC14" fontName="Times New Roman" fontSize="14" isBold="true" isItalic="true" pdfFontName="Times-BoldItalic"/>
+	<style name="TNRC10" fontName="Times New Roman" isItalic="true" pdfFontName="Times-Italic"/>
+	<style name="TNRGC12" fontName="Times New Roman" fontSize="12" isBold="true" isItalic="true" pdfFontName="Times-BoldItalic"/>
+	<style name="TNR10" fontName="Times New Roman" fontSize="10" pdfFontName="Times-Roman"/>
+	<style name="TNR8" fontName="Times New Roman" fontSize="8" pdfFontName="Times-Roman"/>
+	<style name="TNRG10" fontName="Times New Roman" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="TNRG12" fontName="Times New Roman" fontSize="12" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="TNRG8" fontName="Times New Roman" fontSize="8" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="TNR9" fontName="Times New Roman" fontSize="9" pdfFontName="Times-Roman"/>
+	<style name="TNRG9" fontName="Times New Roman" fontSize="9" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="TNRG14" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="TNRGC16" fontName="Times New Roman" fontSize="16" isBold="true" isItalic="true" pdfFontName="Times-BoldItalic"/>
+	<style name="TNRG16" fontName="Times New Roman" fontSize="16" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="TNRC16" fontName="Times New Roman" fontSize="16" isItalic="true" pdfFontName="Times-Italic"/>
+	<style name="TNR16" fontName="Times New Roman" fontSize="16" pdfFontName="Times-Roman"/>
+	<style name="TNRC9" fontName="Times New Roman" fontSize="9" isItalic="true" pdfFontName="Times-Italic"/>
+	<style name="TNR6" fontName="Times New Roman" fontSize="6" pdfFontName="Times-Roman"/>
+	<style name="TNRG6" fontName="Times New Roman" fontSize="6" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="TNRC6" fontName="Times New Roman" fontSize="6" isItalic="true" pdfFontName="Times-Italic"/>
+	<style name="TNRGC6" fontName="Times New Roman" fontSize="6" isBold="true" isItalic="true" pdfFontName="Times-BoldItalic"/>
+	<style name="TNR7" fontName="Times New Roman" fontSize="7" pdfFontName="Times-Roman"/>
+	<style name="TNRG7" fontName="Times New Roman" fontSize="7" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="TNRC7" fontName="Times New Roman" fontSize="7" isItalic="true" pdfFontName="Times-Italic"/>
+	<style name="TNRGC7" fontName="Times New Roman" fontSize="7" isBold="true" isItalic="true" pdfFontName="Times-BoldItalic"/>
+	<style name="TNRGC9" fontName="Times New Roman" fontSize="9" isBold="true" isItalic="true" pdfFontName="Times-BoldItalic"/>
+	<parameter name="REPORT_FOLDER" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<queryString language="JSON">
+		<![CDATA[]]>
+	</queryString>
+	<field name="domanda_id" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="domanda_id"/>
+		<fieldDescription><![CDATA[domanda_id]]></fieldDescription>
+	</field>
+	<field name="stato_domanda" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="stato_domanda"/>
+		<fieldDescription><![CDATA[stato_domanda]]></fieldDescription>
+	</field>
+	<field name="ban_descrizione" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="ban_descrizione"/>
+		<fieldDescription><![CDATA[ban_descrizione]]></fieldDescription>
+	</field>
+	<field name="ban_descrizione_agg" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="ban_descrizione_agg"/>
+		<fieldDescription><![CDATA[ban_descrizione_agg]]></fieldDescription>
+	</field>
+	<field name="ban_protocollo" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="ban_protocollo"/>
+		<fieldDescription><![CDATA[ban_protocollo]]></fieldDescription>
+	</field>
+	<field name="ban_anno_inizio_val" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="ban_anno_inizio_val"/>
+		<fieldDescription><![CDATA[ban_anno_inizio_val]]></fieldDescription>
+	</field>
+	<field name="ban_anno_fine_val" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="ban_anno_fine_val"/>
+		<fieldDescription><![CDATA[ban_anno_fine_val]]></fieldDescription>
+	</field>
+	<field name="ban_data_fine_val" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="ban_data_fine_val"/>
+		<fieldDescription><![CDATA[ban_data_fine_val]]></fieldDescription>
+	</field>
+	<field name="ban_anno_dichiarazione_redditi" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="ban_anno_dichiarazione_redditi"/>
+		<fieldDescription><![CDATA[ban_anno_dichiarazione_redditi]]></fieldDescription>
+	</field>
+	<field name="ban_modello_domanda" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="ban_modello_domanda"/>
+		<fieldDescription><![CDATA[ban_modello_domanda]]></fieldDescription>
+	</field>
+	<field name="matricola_dip" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="matricola_dip"/>
+		<fieldDescription><![CDATA[matricola_dip]]></fieldDescription>
+	</field>
+	<field name="dip_nominativo" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="dip_nominativo"/>
+		<fieldDescription><![CDATA[dip_nominativo]]></fieldDescription>
+	</field>
+	<field name="dip_sesso" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="dip_sesso"/>
+		<fieldDescription><![CDATA[dip_sesso]]></fieldDescription>
+	</field>
+	<field name="dip_com_nas" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="dip_com_nas"/>
+		<fieldDescription><![CDATA[dip_com_nas]]></fieldDescription>
+	</field>
+	<field name="dip_data_nas" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="dip_data_nas"/>
+		<fieldDescription><![CDATA[dip_data_nas]]></fieldDescription>
+	</field>
+	<field name="emailRec" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="emailRec"/>
+		<fieldDescription><![CDATA[emailRec]]></fieldDescription>
+	</field>
+	<field name="telefonoRec" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="telefonoRec"/>
+		<fieldDescription><![CDATA[telefonoRec]]></fieldDescription>
+	</field>
+	<field name="cellulareRec" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="cellulareRec"/>
+		<fieldDescription><![CDATA[cellulareRec]]></fieldDescription>
+	</field>
+	<field name="labelIsee" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="labelIsee"/>
+		<fieldDescription><![CDATA[labelIsee]]></fieldDescription>
+	</field>
+	<field name="numSchedaIsee" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="numSchedaIsee"/>
+		<fieldDescription><![CDATA[numSchedaIsee]]></fieldDescription>
+	</field>
+	<field name="numSchedaAltreInfo" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="numSchedaAltreInfo"/>
+		<fieldDescription><![CDATA[numSchedaAltreInfo]]></fieldDescription>
+	</field>
+	<field name="numSchedaReperibilita" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="numSchedaReperibilita"/>
+		<fieldDescription><![CDATA[numSchedaReperibilita]]></fieldDescription>
+	</field>
+	<field name="provinciaAeroporto" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="provinciaAeroporto"/>
+		<fieldDescription><![CDATA[provinciaAeroporto]]></fieldDescription>
+	</field>
+	<field name="indicatoreIseeAnno1" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="indicatoreIseeAnno1"/>
+		<fieldDescription><![CDATA[indicatoreIseeAnno1]]></fieldDescription>
+	</field>
+	<field name="eventoArc" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="eventoArc"/>
+		<fieldDescription><![CDATA[eventoArc]]></fieldDescription>
+	</field>
+	<field name="noteIntolleranze" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="noteIntolleranze"/>
+		<fieldDescription><![CDATA[noteIntolleranze]]></fieldDescription>
+	</field>
+	<field name="noteDisabilita" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="noteDisabilita"/>
+		<fieldDescription><![CDATA[noteDisabilita]]></fieldDescription>
+	</field>
+	<field name="noteGeneriche" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="noteGeneriche"/>
+		<fieldDescription><![CDATA[noteGeneriche]]></fieldDescription>
+	</field>
+	<field name="indicatoreIseeAnno2" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="indicatoreIseeAnno2"/>
+		<fieldDescription><![CDATA[indicatoreIseeAnno2]]></fieldDescription>
+	</field>
+	<field name="data_domanda" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="data_domanda"/>
+		<fieldDescription><![CDATA[data_domanda]]></fieldDescription>
+	</field>
+	<field name="printSchedaIsee" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="printSchedaIsee"/>
+		<fieldDescription><![CDATA[printSchedaIsee]]></fieldDescription>
+	</field>
+	<field name="printSchedaAltreInfo" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="printSchedaAltreInfo"/>
+		<fieldDescription><![CDATA[printSchedaAltreInfo]]></fieldDescription>
+	</field>
+	<field name="printProvinciaAeroportoStazione" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="printProvinciaAeroportoStazione"/>
+		<fieldDescription><![CDATA[printProvinciaAeroportoStazione]]></fieldDescription>
+	</field>
+	<field name="printDichiarazioneCaricoFiscale" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="printDichiarazioneCaricoFiscale"/>
+		<fieldDescription><![CDATA[printDichiarazioneCaricoFiscale]]></fieldDescription>
+	</field>
+	<field name="printDisabilitaPartecipanti" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="printDisabilitaPartecipanti"/>
+		<fieldDescription><![CDATA[printDisabilitaPartecipanti]]></fieldDescription>
+	</field>
+	<field name="printIntolleranzePartecipanti" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="printIntolleranzePartecipanti"/>
+		<fieldDescription><![CDATA[printIntolleranzePartecipanti]]></fieldDescription>
+	</field>
+	<field name="printTelefonoPartecipanti" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="printTelefonoPartecipanti"/>
+		<fieldDescription><![CDATA[printTelefonoPartecipanti]]></fieldDescription>
+	</field>
+	<field name="repertorioAnno" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="repertorioAnno"/>
+		<fieldDescription><![CDATA[repertorioAnno]]></fieldDescription>
+	</field>
+	<field name="repertorioId" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="repertorioId"/>
+		<fieldDescription><![CDATA[repertorioId]]></fieldDescription>
+	</field>
+	<field name="partecipanti" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="partecipanti"/>
+		<fieldDescription><![CDATA[partecipanti]]></fieldDescription>
+	</field>
+	<group name="domanda_id">
+		<groupExpression><![CDATA[$F{domanda_id}]]></groupExpression>
+		<groupHeader>
+			<band height="30" splitType="Stretch">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<textField isBlankWhenNull="false">
+					<reportElement key="textField-74" style="TNR9" x="10" y="2" width="493" height="25" uuid="2975161e-d6dc-4f7f-bf0a-7b0b914fb719"/>
+					<textElement textAlignment="Justified"/>
+					<textFieldExpression><![CDATA[($F{dip_sesso}.equals("M")?"Il sottoscritto ":"La sottoscritta ")+" "+
+$F{dip_nominativo}.trim() + ",  "+($F{dip_sesso}.equals("M")?"nato ":"nata ")
++($F{dip_com_nas}.trim()!=""?" a " + $F{dip_com_nas}.trim():"") + " il "
++ $F{dip_data_nas}
++ ", dipendente CNR matricola " + $F{matricola_dip}
++ ", presenta domanda di partecipazione all'evento organizzato:"]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="37">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<subreport>
+					<reportElement x="1" y="3" width="515" height="30" uuid="e59b64ca-cc63-489a-a4fa-7bc5f91748c5"/>
+					<subreportParameter name="printDisabilitaPartecipanti">
+						<subreportParameterExpression><![CDATA[$F{printDisabilitaPartecipanti}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="printIntolleranzePartecipanti">
+						<subreportParameterExpression><![CDATA[$F{printIntolleranzePartecipanti}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="printTelefonoPartecipanti">
+						<subreportParameterExpression><![CDATA[$F{printTelefonoPartecipanti}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JsonDataSource)$P{REPORT_DATA_SOURCE}).subDataSource("partecipanti")]]></dataSourceExpression>
+					<subreportExpression><![CDATA[$P{SUBREPORT_DIR} +"domanda_arc_subreport_partecipanti.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+			<band height="27">
+				<printWhenExpression><![CDATA[$F{printDichiarazioneCaricoFiscale}.equals("Y")]]></printWhenExpression>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
+					<reportElement key="textField-60" style="TNR10" x="11" y="1" width="493" height="22" uuid="f6eb6423-86a8-4957-81c1-74f53dff36e1">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Justified" markup="styled">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Il richiedente DICHIARA che i partecipanti all'evento sono a proprio carico fiscale."]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="49" splitType="Stretch">
+				<rectangle>
+					<reportElement key="rectangle-2" style="SSH10" x="5" y="23" width="505" height="21" uuid="df1b4684-732f-4efa-bdae-af3649ee58a9"/>
+				</rectangle>
+				<textField isBlankWhenNull="false">
+					<reportElement key="staticText-25" mode="Opaque" x="1" y="1" width="514" height="20" backcolor="#CCCCCC" uuid="254eeaba-841a-427a-9099-ebd09db8538e">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numSchedaReperibilita}+" - DATI PER LA REPERIBILITA'"]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement key="textField-53" style="SSH12" x="11" y="27" width="139" height="14" isRemoveLineWhenBlank="true" uuid="617f091d-91d2-45c6-8b2f-906abc44cb7f"/>
+					<textElement>
+						<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Telefono: " + ($F{telefonoRec}==null?"":$F{telefonoRec})]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement key="textField-54" style="SSH12" x="158" y="27" width="136" height="14" isRemoveLineWhenBlank="true" uuid="b746d13f-5ae8-41e2-8d70-3407990d28c5"/>
+					<textElement>
+						<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Cellulare: " + ($F{cellulareRec}==null?"":$F{cellulareRec})]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement key="textField-63" style="SSH12" x="302" y="27" width="200" height="14" isRemoveLineWhenBlank="true" uuid="455b9ee6-b782-48ee-910f-ebd7b241885e"/>
+					<textElement>
+						<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Email: " + ($F{emailRec}==null?"":$F{emailRec})]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="109">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
+					<reportElement key="textField-57" style="TNR9" x="11" y="5" width="491" height="28" uuid="4e3eda4c-1eff-47ac-a556-a911efb7f486"/>
+					<textElement textAlignment="Justified"/>
+					<textFieldExpression><![CDATA[($F{dip_sesso}.equals("M")?"Il sottoscritto ":"La sottoscritta ")+
+$F{dip_nominativo}.trim() + " DICHIARA di essere a conoscenza delle conseguenze civili e penali ai sensi dell'art. 76 DPR 445/2000 per coloro che rendono dichiarazioni non veritiere."]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement key="textField-58" style="TNR9" x="11" y="34" width="491" height="39" uuid="39e3715f-8716-4714-9133-326d5fbd50e1"/>
+					<textElement textAlignment="Justified"/>
+					<textFieldExpression><![CDATA[($F{dip_sesso}.equals("M")?"Il sottoscritto ":"La sottoscritta ")+
+$F{dip_nominativo}.trim() + " prende atto, ai sensi dell'art.13 della Legge 196/2003 sul trattamento dei dati personali, che i dati contenuti nella presente autocertificazione verranno trattati prevalentemente con procedure informatizzate e potranno essere forniti ad altri organismi pubblici per il raggiungimento delle rispettive finalità istituzionali."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement key="staticText-20" style="SSHG8" positionType="FixRelativeToBottom" x="5" y="77" width="502" height="26" isRemoveLineWhenBlank="true" forecolor="#FF0000" uuid="5830341e-ac25-42ca-b2e9-68bf3d187452">
+						<printWhenExpression><![CDATA[new Boolean($F{stato_domanda}.equals("SALVATAGGIO_DIP"))]]></printWhenExpression>
+					</reportElement>
+					<box leftPadding="4"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[(*) DOMANDA NON CONFERMATA: ricordarsi di confermare la domanda altrimenti risulterà non valida.]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="Dipendente">
+		<groupExpression><![CDATA[$F{matricola_dip}]]></groupExpression>
+		<groupHeader>
+			<band splitType="Stretch"/>
+			<band height="54">
+				<printWhenExpression><![CDATA[$F{printSchedaIsee}.equals( "Y" )]]></printWhenExpression>
+				<textField isBlankWhenNull="false">
+					<reportElement key="staticText-25" mode="Opaque" x="0" y="3" width="514" height="20" backcolor="#CCCCCC" uuid="cfa55e22-ab22-4e4c-ba68-a957e1e84100">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numSchedaIsee}+" - "+$F{labelIsee}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
+					<reportElement key="textField-60" style="TNR10" x="11" y="27" width="493" height="22" uuid="f4921654-a841-4ad3-9302-fbb8056d2295">
+						<printWhenExpression><![CDATA[$F{ban_modello_domanda}==null]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Justified"/>
+					<textFieldExpression><![CDATA[$F{indicatoreIseeAnno1}!=null?
+"L'indicatore della situazione economica equivalente (ISEE ORDINARIO) per l'anno è "+$F{indicatoreIseeAnno1}:
+($F{ban_anno_inizio_val}<$F{ban_anno_fine_val}&& $F{indicatoreIseeAnno2}!=null)?
+"L'indicatore della situazione economica equivalente (ISEE ORDINARIO) per l'anno "+($F{ban_anno_dichiarazione_redditi})+" non risulta inserito nell'apposita anagrafica (oppure non risulta confermato)":
+($F{ban_anno_inizio_val}<$F{ban_anno_fine_val}&& $F{indicatoreIseeAnno2}==null)?
+($F{dip_sesso}.equals("M")?"Il sottoscritto":"La sottoscritta")
++ " DICHIARA che per gli anni "+$F{ban_anno_dichiarazione_redditi}+ " e " + ($F{ban_anno_dichiarazione_redditi}.intValue()+1)+
+" non ha inserito, nell'apposita anagrafica, alcuna dichiarazione ISEE ORDINARIO (oppure non risulta confermata). Pertanto, ai fini della redazione della graduatoria e della determinazione dell'importo spettante sarà considerato un ISEE ORDINARIO presunto della fascia massima.":
+($F{dip_sesso}.equals("M")?"Il sottoscritto":"La sottoscritta")
++ " DICHIARA che per " +$F{ban_anno_dichiarazione_redditi} + " l'anno "+$F{ban_anno_dichiarazione_redditi}+
+" non ha inserito, nell'apposita anagrafica, alcuna dichiarazione ISEE ORDINARIO (oppure non risulta confermata). Pertanto, ai fini della redazione della graduatoria e della determinazione dell'importo spettante sarà considerato un ISEE ORDINARIO presunto della fascia massima."]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
+					<reportElement key="textField-60" style="TNR10" x="11" y="27" width="493" height="22" uuid="1b870232-71e1-497e-a7a7-22c67c2d2178">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<printWhenExpression><![CDATA[!($F{ban_modello_domanda}==null)]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Justified"/>
+					<textFieldExpression><![CDATA[($F{dip_sesso}.equals("M")?"Il sottoscritto":"La sottoscritta") + " DICHIARA che ai fini della presente domanda verrà automaticamente considerato l'ISEE ordinario, in stato 'confermato', valido alla scadenza per la presentazione delle domande. In caso contrario l'ISEE verrà considerato al valore più alto previsto."]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="23">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<printWhenExpression><![CDATA[$F{ban_modello_domanda}==null &&
+($F{printSchedaIsee}.equals( "Y" ) &&
+$F{ban_anno_inizio_val}<$F{ban_anno_fine_val} && ($F{indicatoreIseeAnno1}!=null || $F{indicatoreIseeAnno2}!=null))]]></printWhenExpression>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+					<reportElement key="textField-60" style="TNR10" x="11" y="0" width="493" height="23" printWhenGroupChanges="Dipendente" uuid="0c6c2a37-1823-44db-9ba0-1fbb8cb0fdab">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Justified"/>
+					<textFieldExpression><![CDATA[$F{indicatoreIseeAnno2}!=null?
+"L'indicatore della situazione economica equivalente (ISEE ORDINARIO) per l'anno "+($F{ban_anno_dichiarazione_redditi}.intValue()+1)+" è "+
+$F{indicatoreIseeAnno2}:
+"L'indicatore della situazione economica equivalente (ISEE ORDINARIO) per l'anno "+($F{ban_anno_dichiarazione_redditi}.intValue()+1)+" non risulta inserito nell'apposita anagrafica (oppure non risulta confermato)"]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="25">
+				<textField isBlankWhenNull="false">
+					<reportElement key="staticText-25" mode="Opaque" x="0" y="3" width="514" height="20" backcolor="#CCCCCC" uuid="7db9bf1c-e8a3-4e3c-8d30-509ff0a9a920">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numSchedaAltreInfo}+" - ALTRE INFORMAZIONI"]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="25">
+				<printWhenExpression><![CDATA[$F{eventoArc}!=null && $F{eventoArc}!=""]]></printWhenExpression>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
+					<reportElement key="textField-60" style="TNR10" x="11" y="1" width="493" height="22" uuid="a89e7bca-eff7-43df-b3f2-b1f3a01fca2c">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Justified" markup="styled"/>
+					<textFieldExpression><![CDATA["<style isBold='true'>Tipo Evento: </style>"+$F{eventoArc}]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="25">
+				<printWhenExpression><![CDATA[$F{printProvinciaAeroportoStazione}.equals( "Y" )]]></printWhenExpression>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
+					<reportElement key="textField-60" style="TNR10" x="11" y="1" width="493" height="22" uuid="47d52dfa-fe48-4c48-9608-804598ec8bda">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Justified" markup="styled"/>
+					<textFieldExpression><![CDATA["<style isBold='true'>Provincia Aeroporto/Stazione ferroviaria di partenza: </style>"+$F{provinciaAeroporto}]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="25">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<printWhenExpression><![CDATA[$F{noteIntolleranze}!=null && $F{noteIntolleranze}!=""]]></printWhenExpression>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
+					<reportElement key="textField-60" style="TNR10" x="11" y="1" width="493" height="22" uuid="44e02b2d-e417-4781-80b0-a4b659267e37">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Justified" markup="styled"/>
+					<textFieldExpression><![CDATA["<style isBold='true'>Note Intolleranze: </style>"+$F{noteIntolleranze}]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="25">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<printWhenExpression><![CDATA[$F{noteDisabilita}!=null && $F{noteDisabilita}!=""]]></printWhenExpression>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
+					<reportElement key="textField-60" style="TNR10" x="11" y="1" width="493" height="22" uuid="53825a11-d810-4069-b6bb-79cef0ae48c6">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Justified" markup="styled"/>
+					<textFieldExpression><![CDATA["<style isBold='true'>Note Disabilita: </style>"+$F{noteDisabilita}]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="25">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
+					<reportElement key="textField-60" style="TNR10" x="11" y="1" width="493" height="22" uuid="998c9629-0801-42cf-9960-45e961c99c2a">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Justified" markup="styled"/>
+					<textFieldExpression><![CDATA["<style isBold='true'>Note Generiche: </style>"+($F{noteGeneriche}!=null && $F{noteGeneriche}!=""?$F{noteGeneriche}:"")]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band splitType="Stretch"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="58" splitType="Stretch">
+			<staticText>
+				<reportElement key="staticText-9" style="SSH12" x="0" y="38" width="513" height="13" isRemoveLineWhenBlank="true" forecolor="#FF0000" uuid="60768384-7d59-4759-a039-3d944b7d01d2">
+					<printWhenExpression><![CDATA[new Boolean($F{stato_domanda}.equals("SALVATAGGIO_DIP"))]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[STAMPA NON VALIDA AI FINI DELLA RICHIESTA DI PARTECIPAZIONE ALL'EVENTO(*)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-49" style="TNRC16" x="0" y="0" width="515" height="20" uuid="161d3aa0-2e69-422e-b9a5-3a1e5aefc0c2"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[CONSIGLIO NAZIONALE DELLE RICERCHE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-50" style="TNR10" x="1" y="23" width="514" height="12" uuid="4d063f51-130e-4b97-8359-0cae1bff93a7"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Servizi in linea per il personale (SIPER)]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="53" splitType="Stretch">
+			<staticText>
+				<reportElement key="staticText-6" style="TNRGC12" x="0" y="4" width="515" height="17" uuid="6b06f018-7e5f-4997-aabc-f906be0330e6"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Domanda di partecipazione]]></text>
+			</staticText>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="false">
+				<reportElement key="textField-23" style="TNRGC12" x="0" y="24" width="515" height="26" isPrintWhenDetailOverflows="true" uuid="9f070cfe-c757-4ac7-9031-0d429734d912"/>
+				<textElement textAlignment="Center" markup="styled">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ban_descrizione}+
+($F{ban_descrizione_agg}!=null?"<br />"+$F{ban_descrizione_agg}:"")+
+($F{ban_protocollo}!=null?"<br />"+$F{ban_protocollo}:"")+
+($F{ban_data_fine_val}!=null?"<br />(Scad. " + $F{ban_data_fine_val} + ")":"")]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="51" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement key="textField-3" style="TNR10" positionType="Float" x="8" y="3" width="188" height="15" uuid="a06f7b9f-b57e-471e-9813-8213f9b12c0b"/>
+				<box leftPadding="0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Data Domanda: "+$F{data_domanda}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField-27" style="TNR10" positionType="Float" x="8" y="18" width="189" height="15" uuid="ca1f4f1d-7ae1-4aa7-9d25-e244e7e3925b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Identificativo: " + $F{domanda_id}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField-27" style="TNR10" positionType="Float" x="8" y="33" width="189" height="15" printWhenGroupChanges="Dipendente" uuid="3ffb694a-34b6-44da-b634-a2508eb7a3a7">
+					<printWhenExpression><![CDATA[$F{repertorioAnno}!=null && $F{repertorioId}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Repertorio n. ARC " + $F{repertorioAnno}+" / "+$F{repertorioId}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

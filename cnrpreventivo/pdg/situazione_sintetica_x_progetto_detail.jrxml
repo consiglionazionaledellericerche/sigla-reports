@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final utlizzo versione della libreria JasperReports6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="situazione_sintetica_x_progetto_main" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e2b12cdf-7e2e-475f-8db5-046d497e7fd2">
 	<property name="ireport.scriptlethandling" value="0"/>
 	<property name="ireport.encoding" value="ISO-8859-1"/>
@@ -95,8 +96,8 @@
        a.cd_linea_attivita cd_gae, a.ds_linea_attivita ds_gae,
        a.ds_voce_piano, a.cd_elemento_voce, a.ds_elemento_voce,
        a.STANZIAMENTO_ACC, a.VARIAZIONI_ACC,
-       a.STANZIAMENTO_DEC stanziamento, a.VARIAZIONI_DEC variazioni,
-       a.TOT_IMPACC impacc, a.TOT_MANREV pagris, a.TOT_NUMMOV nummov,
+       a.STANZIAMENTO_DEC stanziamento, a.VARIAZIONI_DEC variazioni, 
+       a.TOT_IMPACC + a.TOT_VINCOLI impacc, a.TOT_MANREV pagris, a.TOT_NUMMOV nummov,
        a.TOT_NUMMOV_OBBACC nummov_obbacc, a.TOT_NUMMOV_VARIAZIONI nummov_variazioni
 FROM TMP_STAMPA_SITUAZIONE_PROGETTI a
 where a.esercizio = $P{P_ESERCIZIO}
@@ -253,7 +254,7 @@ CASE WHEN $P{P_ORDINE}='V' THEN TO_CHAR(a.esercizio_res) ELSE a.cd_elemento_voce
 		<groupExpression><![CDATA[$F{TIPO}]]></groupExpression>
 		<groupFooter>
 			<band height="20">
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement key="textField-36" style="VERB10" x="4" y="0" width="255" height="15" uuid="4e61ab82-cf1e-49d8-b559-2a540024bd9e">
 						<printWhenExpression><![CDATA["S".equals($V{P_STAMPA_ACCENTRATE})]]></printWhenExpression>
 					</reportElement>
@@ -266,7 +267,7 @@ CASE WHEN $P{P_ORDINE}='V' THEN TO_CHAR(a.esercizio_res) ELSE a.cd_elemento_voce
 					<textElement textAlignment="Right" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA["TOTALE GENERALE "+$P{P_CD_PROGLIV2}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement key="textField-36" style="VERB10" x="4" y="0" width="447" height="15" uuid="57dc344a-ff8f-4af0-ac69-e3187738c682">
 						<printWhenExpression><![CDATA["N".equals($V{P_STAMPA_ACCENTRATE})]]></printWhenExpression>
 					</reportElement>
@@ -392,7 +393,7 @@ CASE WHEN $P{P_ORDINE}='V' THEN TO_CHAR(a.esercizio_res) ELSE a.cd_elemento_voce
 		<groupHeader>
 			<band height="30">
 				<printWhenExpression><![CDATA["S".equals($P{P_ROTTURA_PIANO})]]></printWhenExpression>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement key="textField-5" style="VER10" x="4" y="10" width="831" height="20" uuid="5bc00b5f-3c3d-49a0-a803-f31405979c93"/>
 					<box>
 						<topPen lineWidth="0.0" lineColor="#000000"/>
@@ -410,7 +411,7 @@ CASE WHEN $P{P_ORDINE}='V' THEN TO_CHAR(a.esercizio_res) ELSE a.cd_elemento_voce
 		<groupFooter>
 			<band height="20">
 				<printWhenExpression><![CDATA["S".equals($P{P_ROTTURA_PIANO})]]></printWhenExpression>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement key="textField-36" style="VERB10" x="4" y="0" width="255" height="15" uuid="cbeabeec-6719-4302-a16d-9b2bd787c2ac">
 						<printWhenExpression><![CDATA["S".equals($V{P_STAMPA_ACCENTRATE})]]></printWhenExpression>
 					</reportElement>
@@ -423,7 +424,7 @@ CASE WHEN $P{P_ORDINE}='V' THEN TO_CHAR(a.esercizio_res) ELSE a.cd_elemento_voce
 					<textElement textAlignment="Right" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA["TOTALE PIANO ECONOMICO "+  ("S".equals($P{P_ROTTURA_PIANO})?$F{CD_VOCE_PIANO}:"")]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement key="textField-36" style="VERB10" x="4" y="0" width="447" height="15" uuid="d8874fb7-41ae-4260-bdfc-e109eeb9a4a1">
 						<printWhenExpression><![CDATA["N".equals($V{P_STAMPA_ACCENTRATE})]]></printWhenExpression>
 					</reportElement>
@@ -551,7 +552,7 @@ CASE WHEN $P{P_ORDINE}='V' THEN TO_CHAR(a.esercizio_res) ELSE a.cd_elemento_voce
 			<band height="30">
 				<printWhenExpression><![CDATA["S".equals( $P{P_ROTTURA_GAE} ) &&
 $V{isGaeLastDetail}.equals( Boolean.FALSE )]]></printWhenExpression>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement key="textField-5" style="VER10" x="4" y="10" width="831" height="20" uuid="6e12759f-83a3-402d-8482-0dc24f37081f"/>
 					<box>
 						<topPen lineWidth="0.0" lineColor="#000000"/>
@@ -569,7 +570,7 @@ $V{isGaeLastDetail}.equals( Boolean.FALSE )]]></printWhenExpression>
 		<groupFooter>
 			<band height="20">
 				<printWhenExpression><![CDATA["S".equals($P{P_ROTTURA_GAE})]]></printWhenExpression>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement key="textField-5" style="VERB10" x="4" y="0" width="255" height="15" uuid="00306d25-26a6-4e04-8e21-198942ea7e19">
 						<printWhenExpression><![CDATA["S".equals($V{P_STAMPA_ACCENTRATE}) &&
 $V{isGaeLastDetail}.equals( Boolean.TRUE )]]></printWhenExpression>
@@ -583,7 +584,7 @@ $V{isGaeLastDetail}.equals( Boolean.TRUE )]]></printWhenExpression>
 					<textElement textAlignment="Right" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA["GAE "+$F{CD_GAE}+" - "+$F{DS_GAE}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement key="textField-5" style="VERB10" x="4" y="0" width="447" height="15" uuid="b7663d49-ff82-471f-8fe4-f2b3a9453a74">
 						<printWhenExpression><![CDATA["N".equals($V{P_STAMPA_ACCENTRATE}) &&
 $V{isGaeLastDetail}.equals( Boolean.TRUE )]]></printWhenExpression>
@@ -597,7 +598,7 @@ $V{isGaeLastDetail}.equals( Boolean.TRUE )]]></printWhenExpression>
 					<textElement textAlignment="Right" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA["GAE "+$F{CD_GAE}+" - "+$F{DS_GAE}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement key="textField-36" style="VERB10" x="4" y="0" width="255" height="15" uuid="d4bc8228-874c-4f96-8422-557e9228b579">
 						<printWhenExpression><![CDATA["S".equals($V{P_STAMPA_ACCENTRATE}) &&
 $V{isGaeLastDetail}.equals(Boolean.FALSE)]]></printWhenExpression>
@@ -612,7 +613,7 @@ $V{isGaeLastDetail}.equals(Boolean.FALSE)]]></printWhenExpression>
 					<textFieldExpression><![CDATA["TOTALE GAE "+
 ("S".equals($P{P_ROTTURA_GAE})?$F{CD_GAE}:"")]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement key="textField-36" style="VERB10" x="4" y="0" width="447" height="15" uuid="b7f2c486-ffc9-415d-962a-0b6e7f231191">
 						<printWhenExpression><![CDATA["N".equals($V{P_STAMPA_ACCENTRATE}) &&
 $V{isGaeLastDetail}.equals(Boolean.FALSE)]]></printWhenExpression>
@@ -741,7 +742,7 @@ $V{isGaeLastDetail}.equals(Boolean.FALSE)]]></printWhenExpression>
 			<band height="30">
 				<printWhenExpression><![CDATA["S".equals( $P{P_ROTTURA_ANNO} ) &&
 "S".equals( $P{P_ROTTURA_VOCE} )]]></printWhenExpression>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement key="textField-5" style="VERB10" x="4" y="10" width="831" height="20" uuid="8c445f61-a9a9-4094-afca-8b2985506750"/>
 					<box>
 						<topPen lineWidth="0.0" lineColor="#000000"/>
@@ -761,7 +762,7 @@ $F{CD_ELEMENTO_VOCE}+" - "+$F{DS_ELEMENTO_VOCE})]]></textFieldExpression>
 			<band height="20">
 				<printWhenExpression><![CDATA["S".equals( $P{P_ROTTURA_ANNO} ) &&
 "S".equals( $P{P_ROTTURA_VOCE} )]]></printWhenExpression>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement key="textField-36" style="VERB10" x="4" y="0" width="255" height="15" uuid="d3530e35-e324-4c26-971b-f7879544e239">
 						<printWhenExpression><![CDATA["S".equals($V{P_STAMPA_ACCENTRATE})]]></printWhenExpression>
 					</reportElement>
@@ -778,7 +779,7 @@ $F{CD_ELEMENTO_VOCE}+" - "+$F{DS_ELEMENTO_VOCE})]]></textFieldExpression>
 ("S".equals($P{P_ROTTURA_GAE})?"GAE "+$F{CD_GAE}+"/":"")+
 ("A".equals($P{P_ORDINE})?$F{ESERCIZIO_RES}:$F{CD_ELEMENTO_VOCE}))]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement key="textField-36" style="VERB10" x="4" y="0" width="447" height="15" uuid="68ef9ce6-5f87-4484-85c4-bc1dbe3cd476">
 						<printWhenExpression><![CDATA["N".equals($V{P_STAMPA_ACCENTRATE})]]></printWhenExpression>
 					</reportElement>
@@ -908,7 +909,7 @@ $F{CD_ELEMENTO_VOCE}+" - "+$F{DS_ELEMENTO_VOCE})]]></textFieldExpression>
 	</background>
 	<title>
 		<band height="21">
-			<textField isStretchWithOverflow="true" evaluationTime="Report" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" evaluationTime="Report" isBlankWhenNull="true">
 				<reportElement key="textField-36" style="VERB6" x="0" y="1" width="842" height="15" uuid="ef90bd89-9cd6-4dd8-9d0f-be33b5e69528"/>
 				<box topPadding="4">
 					<topPen lineWidth="0.0" lineColor="#000000"/>
@@ -1066,7 +1067,7 @@ $F{CD_ELEMENTO_VOCE}+" - "+$F{DS_ELEMENTO_VOCE})]]></textFieldExpression>
 					<rightPen lineWidth="0.5" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Impegnato]]></text>
+				<text><![CDATA[Impegnato / Vincolato]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText-37" style="VERB8" x="707" y="13" width="64" height="21" uuid="8e46c422-1c70-41fd-a722-3df3e52c2e7a">
@@ -1177,7 +1178,7 @@ $F{CD_ELEMENTO_VOCE}+" - "+$F{DS_ELEMENTO_VOCE})]]></textFieldExpression>
 	<detail>
 		<band height="31">
 			<printWhenExpression><![CDATA["S".equals($P{P_ROTTURA_VOCE}) || "S".equals($P{P_ROTTURA_ANNO})]]></printWhenExpression>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement key="textField-7" style="VERB10" x="4" y="10" width="447" height="20" uuid="d37020f4-0dfd-4c0c-b1a1-13b0173be403">
 					<printWhenExpression><![CDATA["N".equals($V{P_STAMPA_ACCENTRATE}) && "S".equals( $P{P_ROTTURA_VOCE} ) && ("A".equals( $P{P_ORDINE} ) || "N".equals( $P{P_ROTTURA_ANNO} ))]]></printWhenExpression>
 				</reportElement>
@@ -1190,7 +1191,7 @@ $F{CD_ELEMENTO_VOCE}+" - "+$F{DS_ELEMENTO_VOCE})]]></textFieldExpression>
 				<textElement textAlignment="Left" verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA[$F{CD_ELEMENTO_VOCE}+" - "+$F{DS_ELEMENTO_VOCE}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement key="textField-7" style="VERB10" x="4" y="10" width="255" height="20" uuid="ec1a5494-a5b5-4f0b-8350-8c107b448268">
 					<printWhenExpression><![CDATA["S".equals($V{P_STAMPA_ACCENTRATE}) &&
 "S".equals( $P{P_ROTTURA_VOCE} ) &&
@@ -1205,7 +1206,7 @@ $F{CD_ELEMENTO_VOCE}+" - "+$F{DS_ELEMENTO_VOCE})]]></textFieldExpression>
 				<textElement textAlignment="Left" verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA[$F{CD_ELEMENTO_VOCE}+" - "+$F{DS_ELEMENTO_VOCE}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement key="textField-8" style="VERB10" x="191" y="10" width="68" height="20" uuid="f718cbe4-fe97-410d-8379-105ee986d2f8">
 					<printWhenExpression><![CDATA["S".equals($V{P_STAMPA_ACCENTRATE})&&
 !("S".equals( $P{P_ROTTURA_VOCE} ) &&
@@ -1220,7 +1221,7 @@ $F{CD_ELEMENTO_VOCE}+" - "+$F{DS_ELEMENTO_VOCE})]]></textFieldExpression>
 				<textElement verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA["Anno "+$F{ESERCIZIO_RES}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement key="textField-8" style="VERB10" x="383" y="10" width="68" height="20" uuid="bcfa8719-60bf-4c7e-bd7d-5560f295167e">
 					<printWhenExpression><![CDATA["N".equals($V{P_STAMPA_ACCENTRATE})&&
 !("S".equals( $P{P_ROTTURA_VOCE} ) &&
