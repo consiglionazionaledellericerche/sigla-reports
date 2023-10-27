@@ -244,7 +244,7 @@
 		<property name="net.sf.jasperreports.json.field.expression" value="numeroDocumentiSpesa"/>
 		<fieldDescription><![CDATA[numeroDocumentiSpesa]]></fieldDescription>
 	</field>
-	<field name="totaleDocumentiSpesa" class="java.lang.Integer">
+	<field name="totaleDocumentiSpesa" class="java.math.BigDecimal">
 		<property name="net.sf.jasperreports.json.field.expression" value="totaleDocumentiSpesa"/>
 		<fieldDescription><![CDATA[totaleDocumentiSpesa]]></fieldDescription>
 	</field>
@@ -313,7 +313,7 @@ $F{dip_nominativo}.trim() + ",  "+($F{dip_sesso}.equals("M")?"nato ":"nata ")
 					<textElement textAlignment="Justified" verticalAlignment="Middle">
 						<font size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
 					</textElement>
-					<textFieldExpression><![CDATA[ " "+$F{numSchedaReperibilita}+" - DATI PER LA REPERIBILITA'"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{numSchedaReperibilita}+" - DATI PER LA REPERIBILITA'"]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="false">
 					<reportElement key="textField-53" style="SSH12" x="11" y="27" width="139" height="14" isRemoveLineWhenBlank="true" uuid="617f091d-91d2-45c6-8b2f-906abc44cb7f"/>
@@ -397,7 +397,7 @@ $F{dip_nominativo}.trim() + " prende atto, ai sensi dell'art.13 della Legge 196/
 					<textElement textAlignment="Justified" verticalAlignment="Middle">
 						<font size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
 					</textElement>
-					<textFieldExpression><![CDATA[ " "+$F{numSchedaIsee}+" - "+$F{labelIsee}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{numSchedaIsee}+" - "+$F{labelIsee}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
 					<reportElement key="textField-60" style="TNR10" x="11" y="27" width="493" height="22" uuid="f4921654-a841-4ad3-9302-fbb8056d2295">
@@ -442,7 +442,7 @@ $F{indicatoreIseeAnno2}:
 "L'indicatore della situazione economica equivalente (ISEE ORDINARIO) per l'anno "+($F{ban_anno_dichiarazione_redditi}.intValue()+1)+" non risulta inserito nell'apposita anagrafica (oppure non risulta confermato)"]]></textFieldExpression>
 				</textField>
 			</band>
-			<band height="79">
+			<band height="81">
 				<printWhenExpression><![CDATA[$F{printSchedaDocumentiAllegati}.equals("Y")]]></printWhenExpression>
 				<textField isBlankWhenNull="false">
 					<reportElement key="staticText-25" mode="Opaque" x="0" y="3" width="514" height="20" backcolor="#CCCCCC" uuid="d47edd6a-5671-4eef-9689-9a4cccdedb9c">
@@ -451,7 +451,7 @@ $F{indicatoreIseeAnno2}:
 					<textElement textAlignment="Justified" verticalAlignment="Middle">
 						<font size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
 					</textElement>
-					<textFieldExpression><![CDATA[ " "+$F{numSchedaDocumentiSpesa}+" - ELENCO DOCUMENTI ATTESTANTI LA SPESA SOSTENUTA"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{numSchedaDocumentiSpesa}+" - ELENCO DOCUMENTI ATTESTANTI LA SPESA SOSTENUTA"]]></textFieldExpression>
 				</textField>
 				<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
 					<reportElement key="textField-3" style="TNR10" positionType="Float" x="34" y="52" width="188" height="15" uuid="e74a0f21-6780-4d6e-8b01-d3f42474018c"/>
@@ -462,12 +462,12 @@ $F{indicatoreIseeAnno2}:
 					<textFieldExpression><![CDATA["Numero Documenti: "+$F{numeroDocumentiSpesa}]]></textFieldExpression>
 				</textField>
 				<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
-					<reportElement key="textField-3" style="TNR10" positionType="Float" x="250" y="52" width="188" height="15" uuid="cd492672-1e02-4cc1-af12-4bad184f467a"/>
+					<reportElement key="textField-3" style="TNR10" positionType="Float" x="250" y="52" width="110" height="15" uuid="cd492672-1e02-4cc1-af12-4bad184f467a"/>
 					<box leftPadding="0"/>
 					<textElement verticalAlignment="Middle">
 						<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
 					</textElement>
-					<textFieldExpression><![CDATA["Importo Totale Documenti: "+$F{totaleDocumentiSpesa}]]></textFieldExpression>
+					<textFieldExpression><![CDATA["Importo Totale Documenti: "]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
 					<reportElement key="textField-60" style="TNR10" x="11" y="27" width="493" height="22" uuid="e08652c7-922b-48c5-bcbd-5e5c1509101b">
@@ -477,6 +477,11 @@ $F{indicatoreIseeAnno2}:
 					</reportElement>
 					<textElement textAlignment="Justified"/>
 					<textFieldExpression><![CDATA[($F{dip_sesso}.equals("M")?"Il sottoscritto":"La sottoscritta") + " ai sensi dell'art.47 del D.P.R. 445 del 28/12/2000, DICHIARA che i sottoelencati documenti (fatture o ricevute fiscali) sono conformi agli originali in proprio possesso"]]></textFieldExpression>
+				</textField>
+				<textField pattern="¤#,##0.00;¤-#,##0.00">
+					<reportElement style="TNRG9" x="360" y="52" width="100" height="15" uuid="3cf28d9a-6349-4f93-b2f3-cb8b51561286"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{totaleDocumentiSpesa}]]></textFieldExpression>
 				</textField>
 			</band>
 			<band height="25">
@@ -488,7 +493,7 @@ $F{indicatoreIseeAnno2}:
 					<textElement textAlignment="Justified" verticalAlignment="Middle">
 						<font size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
 					</textElement>
-					<textFieldExpression><![CDATA[ " "+$F{numSchedaAltreInfo}+" - ALTRE INFORMAZIONI"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{numSchedaAltreInfo}+" - ALTRE INFORMAZIONI"]]></textFieldExpression>
 				</textField>
 			</band>
 			<band height="25">
