@@ -264,8 +264,7 @@ $F{dip_nominativo}.trim() + ",  "+($F{dip_sesso}.equals("M")?"nato ":"nata ")
 + $F{dip_data_nas}
 + ", dipendente CNR matricola " + $F{matricola_dip}
 + ($F{ban_tipo}.equals("ARCCONTRIBUT")
-	?"rivolge domanda affinche' "+($F{dip_sesso}.equals("M")?"gli ":"le ")+" venga concesso un Sussidio Ordinario per far fronte all'aggravio del bilancio familiare determinato da eventi per il quale "+
-	($F{dip_sesso}.equals("M")?"il sottoscritto ":"la sottoscritta ")+" ha sostenuto spese nell'anno "+$F{ban_anno_dichiarazione_redditi}+"."
+	?"rivolge domanda affinche' "+($F{dip_sesso}.equals("M")?"gli ":"le ")+" venga concesso un Contributo alle spese sostenute per Attivita' Culturali e Ricreative, Anno Solare "+$F{ban_anno_dichiarazione_redditi}+"."
 	:", presenta domanda di partecipazione all'evento organizzato:")]]></textFieldExpression>
 				</textField>
 			</band>
