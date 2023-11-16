@@ -184,6 +184,14 @@
 		<property name="net.sf.jasperreports.json.field.expression" value="data_domanda"/>
 		<fieldDescription><![CDATA[data_domanda]]></fieldDescription>
 	</field>
+	<field name="separatoConMantenimento" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="separatoConMantenimento"/>
+		<fieldDescription><![CDATA[separatoConMantenimento]]></fieldDescription>
+	</field>
+	<field name="printSeparatoConMantenimento" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="printSeparatoConMantenimento"/>
+		<fieldDescription><![CDATA[printSeparatoConMantenimento]]></fieldDescription>
+	</field>
 	<field name="printSchedaPartecipanti" class="java.lang.String">
 		<property name="net.sf.jasperreports.json.field.expression" value="printSchedaPartecipanti"/>
 		<fieldDescription><![CDATA[printSchedaPartecipanti]]></fieldDescription>
@@ -244,7 +252,7 @@
 		<property name="net.sf.jasperreports.json.field.expression" value="numeroDocumentiSpesa"/>
 		<fieldDescription><![CDATA[numeroDocumentiSpesa]]></fieldDescription>
 	</field>
-	<field name="totaleDocumentiSpesa" class="java.math.BigDecimal">
+	<field name="totaleDocumentiSpesa" class="java.lang.String">
 		<property name="net.sf.jasperreports.json.field.expression" value="totaleDocumentiSpesa"/>
 		<fieldDescription><![CDATA[totaleDocumentiSpesa]]></fieldDescription>
 	</field>
@@ -382,6 +390,12 @@ $F{dip_nominativo}.trim() + " prende atto, ai sensi dell'art.13 della Legge 196/
 					</subreportParameter>
 					<subreportParameter name="ban_anno_dichiarazione_redditi">
 						<subreportParameterExpression><![CDATA[$F{ban_anno_dichiarazione_redditi}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="printSeparatoConMantenimento">
+						<subreportParameterExpression><![CDATA[$F{printSeparatoConMantenimento}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="separatoConMantenimento">
+						<subreportParameterExpression><![CDATA[$F{separatoConMantenimento}]]></subreportParameterExpression>
 					</subreportParameter>
 					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JsonDataSource)$P{REPORT_DATA_SOURCE}).subDataSource("carichiFiscali")]]></dataSourceExpression>
 					<subreportExpression><![CDATA[$P{SUBREPORT_DIR} +"domanda_arc_subreport_carichi_fiscali.jasper"]]></subreportExpression>

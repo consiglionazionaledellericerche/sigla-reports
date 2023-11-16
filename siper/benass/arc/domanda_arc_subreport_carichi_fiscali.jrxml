@@ -53,6 +53,8 @@
 		<defaultValueExpression><![CDATA[new String("202")]]></defaultValueExpression>
 	</parameter>
 	<parameter name="dip_nominativo" class="java.lang.String"/>
+	<parameter name="printSeparatoConMantenimento" class="java.lang.String"/>
+	<parameter name="separatoConMantenimento" class="java.lang.String"/>
 	<queryString language="JSON">
 		<![CDATA[carichiFiscali]]>
 	</queryString>
@@ -146,4 +148,19 @@ $P{ban_anno_dichiarazione_redditi}+ " il proprio nucleo familiare, con separata 
 			</textField>
 		</band>
 	</detail>
+	<pageFooter>
+		<band height="40">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<printWhenExpression><![CDATA["Y".equals($P{printSeparatoConMantenimento})]]></printWhenExpression>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement key="textField-60" style="SSH8" x="10" y="6" width="497" height="33" uuid="f4e495ce-7919-40f8-a65e-689b537c6634">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["Il richiedente DICHIARA di "+
+("Y".equals($P{separatoConMantenimento})?"":"non ")+
+"essere legalmente separato/a o divorziato/a gravato/a da mantenimento a favore dell'ex coniuge e/o dei figli disposto dal giudice con sentenza omologata."]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
 </jasperReport>
