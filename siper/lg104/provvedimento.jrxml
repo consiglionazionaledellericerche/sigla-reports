@@ -89,16 +89,18 @@
 	<group name="Domanda_Id" isStartNewPage="true">
 		<groupExpression><![CDATA[$F{domanda_id}]]></groupExpression>
 		<groupHeader>
-			<band height="155">
+			<band height="172">
 				<staticText>
 					<reportElement key="staticText-2" style="TNRG14" x="0" y="115" width="535" height="20" uuid="0c969657-94df-4889-b006-80cf9b9e76b5"/>
 					<textElement textAlignment="Center"/>
 					<text><![CDATA[Direzione Centrale Gestione delle Risorse]]></text>
 				</staticText>
 				<staticText>
-					<reportElement key="staticText-3" style="TNR12" x="0" y="136" width="535" height="14" uuid="eba7f566-fd9d-49bf-bce0-55839a634eec"/>
+					<reportElement key="staticText-3" style="TNR12" x="0" y="136" width="535" height="31" uuid="eba7f566-fd9d-49bf-bce0-55839a634eec"/>
 					<textElement textAlignment="Center"/>
-					<text><![CDATA[Ufficio Gestione Risorse Umane]]></text>
+					<text><![CDATA[Ufficio Gestione Risorse Umane
+Dott. Pietro Piro
+]]></text>
 				</staticText>
 				<staticText>
 					<reportElement key="staticText-1" style="TNRG11" x="0" y="88" width="56" height="16" uuid="24c65cc2-00d4-4695-8b73-bf6cfdc3919d"/>
@@ -139,72 +141,50 @@
 	<group name="Detail_1">
 		<groupExpression><![CDATA[$V{REPORT_COUNT}]]></groupExpression>
 		<groupHeader>
-			<band height="164" splitType="Stretch">
+			<band height="147" splitType="Stretch">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				<staticText>
-					<reportElement key="staticText-5" style="TNR11" x="10" y="94" width="515" height="13" uuid="9e84acb6-cbcd-46b5-acbf-2954d3f6f95c"/>
+					<reportElement key="staticText-5" style="TNR11" x="10" y="77" width="515" height="13" uuid="9e84acb6-cbcd-46b5-acbf-2954d3f6f95c"/>
 					<textElement textAlignment="Justified"/>
 					<text><![CDATA[Visto il C.C.N.L. del 19.4.2018 per il personale del Comparto "Istruzione e Ricerca"]]></text>
 				</staticText>
 				<staticText>
-					<reportElement key="staticText-6" style="TNR11" x="10" y="112" width="515" height="13" uuid="2d05f929-58ff-4760-bd59-4a608d7a01c5"/>
+					<reportElement key="staticText-6" style="TNR11" x="10" y="95" width="515" height="13" uuid="2d05f929-58ff-4760-bd59-4a608d7a01c5"/>
 					<textElement textAlignment="Justified"/>
 					<text><![CDATA[Visto l'art. 33 della legge 5.2.1992, n. 104, come modificato dalla Legge 4.11.2010, n.183;]]></text>
 				</staticText>
 				<staticText>
-					<reportElement key="staticText-7" style="TNR11" x="10" y="130" width="515" height="13" uuid="37cf18c1-a885-40b0-92cd-f5810dbea5ae"/>
+					<reportElement key="staticText-7" style="TNR11" x="10" y="113" width="515" height="13" uuid="37cf18c1-a885-40b0-92cd-f5810dbea5ae"/>
 					<textElement textAlignment="Justified"/>
 					<text><![CDATA[Visto l'art. 2, comma 3 ter, del D.L.27.8.1993 n.324, convertito in legge 27.10.1993, n.423;]]></text>
 				</staticText>
 				<staticText>
-					<reportElement key="staticText-8" style="TNR11" x="10" y="148" width="515" height="13" uuid="78b454c2-2bc9-4b67-bc63-10b2c6347111"/>
+					<reportElement key="staticText-8" style="TNR11" x="10" y="131" width="515" height="13" uuid="78b454c2-2bc9-4b67-bc63-10b2c6347111"/>
 					<textElement textAlignment="Justified"/>
 					<text><![CDATA[Visto la circolare C.N.R. n. 3/2011 del 20.1.2011;]]></text>
 				</staticText>
 				<staticText>
-					<reportElement key="staticText-11" x="0" y="94" width="10" height="13" uuid="a94ac3ab-4f33-43eb-830e-a4149610a968"/>
+					<reportElement key="staticText-11" x="0" y="77" width="10" height="13" uuid="a94ac3ab-4f33-43eb-830e-a4149610a968"/>
 					<textElement textAlignment="Center"/>
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<staticText>
-					<reportElement key="staticText-12" x="0" y="112" width="10" height="13" uuid="40fa8a3e-a304-4ccd-9989-742b52dde1d6"/>
+					<reportElement key="staticText-12" x="0" y="95" width="10" height="13" uuid="40fa8a3e-a304-4ccd-9989-742b52dde1d6"/>
 					<textElement textAlignment="Center"/>
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<staticText>
-					<reportElement key="staticText-13" x="0" y="130" width="10" height="13" uuid="20c5c47b-cfc0-4e6e-9ad3-bdd9ca86e1b3"/>
+					<reportElement key="staticText-13" x="0" y="113" width="10" height="13" uuid="20c5c47b-cfc0-4e6e-9ad3-bdd9ca86e1b3"/>
 					<textElement textAlignment="Center"/>
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<staticText>
-					<reportElement key="staticText-14" x="0" y="148" width="10" height="13" uuid="8fd87530-1e0c-4655-9287-5bb08ea06012"/>
+					<reportElement key="staticText-14" x="0" y="131" width="10" height="13" uuid="8fd87530-1e0c-4655-9287-5bb08ea06012"/>
 					<textElement textAlignment="Center"/>
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<staticText>
-					<reportElement key="staticText-5" style="TNR11" x="10" y="5" width="515" height="26" uuid="05203c8c-6f6d-4d75-90b4-3bb7bbb47afd"/>
-					<textElement textAlignment="Justified"/>
-					<text><![CDATA[Visto il provvedimento del Direttore Generale n. 051 prot. n. 39764 del 27.05.2022 di conferimento incarico di direzione ad interim dell'Ufficio Gestione Risorse Umane al Dott. Pierluigi Raimondi]]></text>
-				</staticText>
-				<staticText>
-					<reportElement key="staticText-11" x="0" y="5" width="10" height="13" uuid="9a0971d8-8833-43f3-8ce3-50a397989103"/>
-					<textElement textAlignment="Center"/>
-					<text><![CDATA[-]]></text>
-				</staticText>
-				<staticText>
-					<reportElement key="staticText-21" x="1" y="34" width="10" height="13" uuid="3645010e-13ff-46e5-8478-e40045ae730d"/>
-					<textElement textAlignment="Center"/>
-					<text><![CDATA[-]]></text>
-				</staticText>
-				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-					<reportElement key="textField-7" style="TNR11" x="10" y="34" width="515" height="26" uuid="68d5bb01-b07d-4915-963f-93152d67860d">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					</reportElement>
-					<textElement textAlignment="Justified"/>
-					<textFieldExpression><![CDATA["Vista la nota di dimissioni immediate del Dott. Raimondi dall’ incarico di Dirigente a.i. dell’Ufficio Gestione delle Risorse Umane protocollo N. 354915 del 20/11/2023;"]]></textFieldExpression>
-				</textField>
-				<staticText>
-					<reportElement key="staticText-21" x="1" y="64" width="10" height="13" uuid="4042e284-b816-4ad8-beab-8b22f0e44989">
+					<reportElement key="staticText-21" x="1" y="48" width="10" height="13" uuid="4042e284-b816-4ad8-beab-8b22f0e44989">
 						<property name="com.jaspersoft.studio.unit.x" value="px"/>
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					</reportElement>
@@ -212,12 +192,28 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-					<reportElement key="textField-7" style="TNR11" x="10" y="63" width="515" height="26" uuid="325b708d-52b4-4a50-95ee-6be7c4c9f289">
+					<reportElement key="textField-7" style="TNR11" x="10" y="47" width="515" height="26" uuid="325b708d-52b4-4a50-95ee-6be7c4c9f289">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					</reportElement>
 					<textElement textAlignment="Justified"/>
-					<textFieldExpression><![CDATA["Visto l'articolo 13 comma2 del Disciplinare in Materia di Incarichi Dirigenziali e di Responsabilità approvato dal Consiglio di Amministrazione nella Riunione del 5 febbraio 2019 con Delibera n.15/2019 Verbale 368;"]]></textFieldExpression>
+					<textFieldExpression><![CDATA["Visto l'articolo 13 comma 2 del Disciplinare in Materia di Incarichi Dirigenziali e di Responsabilità approvato dal Consiglio di Amministrazione nella Riunione del 5 febbraio 2019 con Delibera n.15/2019 Verbale 368;"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement key="staticText-21" x="1" y="2" width="10" height="13" uuid="4042e284-b816-4ad8-beab-8b22f0e44989">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[-]]></text>
+				</staticText>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+					<reportElement key="textField-7" style="TNR11" x="10" y="2" width="515" height="41" uuid="325b708d-52b4-4a50-95ee-6be7c4c9f289">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Justified"/>
+					<textFieldExpression><![CDATA["Visto il provvedimento del Direttore Generale n. 151, prot. 412953 del 21/12/2023, di conferimento al Dott. Pietro Piro dell’incarico di direzione dell'Ufficio Gestione Risorse Umane afferente alla Direzione Centrale Gestione delle Risorse, a decorrere dal 21 dicembre 2023 fino al 20 dicembre 2026;"]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
