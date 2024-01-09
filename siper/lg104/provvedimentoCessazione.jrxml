@@ -101,7 +101,7 @@
 	<group name="Domanda_Id">
 		<groupExpression><![CDATA[$F{domanda_id}]]></groupExpression>
 		<groupHeader>
-			<band height="157">
+			<band height="169">
 				<staticText>
 					<reportElement key="staticText-2" style="TNRG14" x="0" y="115" width="535" height="19" uuid="9fa39494-579e-408f-9d76-4db3f26b68a5"/>
 					<textElement textAlignment="Center"/>
@@ -120,10 +120,12 @@
 					<textFieldExpression><![CDATA["Pos. "+$F{dip_pos_fasc}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement key="staticText-3" style="TNR12" x="0" y="134" width="535" height="16" uuid="95111215-c14c-41c2-bba6-981a59cbdc78"/>
+					<reportElement key="staticText-3" style="TNR12" x="0" y="134" width="535" height="33" uuid="95111215-c14c-41c2-bba6-981a59cbdc78">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
 					<textElement textAlignment="Center"/>
 					<text><![CDATA[Ufficio Gestione Risorse Umane
-]]></text>
+Dott. Pietro Piro]]></text>
 				</staticText>
 				<staticText>
 					<reportElement key="staticText-1" style="TNRG11" x="0" y="89" width="56" height="16" uuid="8887bc45-1ee2-4c3e-ba93-7d4dcdd99ec8"/>
@@ -152,26 +154,21 @@
 	<group name="Detail_1">
 		<groupExpression><![CDATA[$V{REPORT_COUNT}]]></groupExpression>
 		<groupHeader>
-			<band height="96" splitType="Stretch">
+			<band height="77" splitType="Stretch">
 				<staticText>
 					<reportElement key="staticText-11" x="0" y="3" width="10" height="13" uuid="eb4cb962-a8c6-4466-a510-72b0b63aff72"/>
 					<textElement textAlignment="Center"/>
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<staticText>
-					<reportElement key="staticText-5" style="TNR11" x="10" y="3" width="515" height="26" uuid="0b0fe0b2-d6ee-4550-abc3-6a395d43c145"/>
-					<textElement textAlignment="Justified"/>
-					<text><![CDATA[Visto il provvedimento del Direttore Generale n. 051 prot. n. 39764 del 27.05.2022 di conferimento incarico di direzione ad interim dell'Ufficio Gestione Risorse Umane al Dott. Pierluigi Raimondi]]></text>
-				</staticText>
-				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-					<reportElement key="textField-7" style="TNR11" x="10" y="33" width="515" height="26" uuid="ddd9ff54-52f7-44ea-be18-a3e755c6fee7">
+					<reportElement key="staticText-5" style="TNR11" x="10" y="3" width="515" height="43" uuid="0b0fe0b2-d6ee-4550-abc3-6a395d43c145">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<textElement textAlignment="Justified"/>
-					<textFieldExpression><![CDATA["Vista la nota di dimissioni immediate del Dott. Raimondi dall’ incarico di Dirigente a.i. dell’Ufficio Gestione delle Risorse Umane protocollo N. 354915 del 20/11/2023;"]]></textFieldExpression>
-				</textField>
+					<text><![CDATA[Visto il provvedimento del Direttore Generale n. 151, prot. 412953 del 21/12/2023, di conferimento al Dott. Pietro Piro dell’incarico di direzione dell'Ufficio Gestione Risorse Umane afferente alla Direzione Centrale Gestione delle Risorse, a decorrere dal 21 dicembre 2023 fino al 20 dicembre 2026;]]></text>
+				</staticText>
 				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-					<reportElement key="textField-7" style="TNR11" x="10" y="64" width="515" height="26" uuid="2378a402-914c-493e-ae21-c41fefb2a9fb">
+					<reportElement key="textField-7" style="TNR11" x="10" y="49" width="515" height="26" uuid="2378a402-914c-493e-ae21-c41fefb2a9fb">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					</reportElement>
@@ -179,12 +176,7 @@
 					<textFieldExpression><![CDATA["Visto l'articolo 13 comma2 del Disciplinare in Materia di Incarichi Dirigenziali e di Responsabilità approvato dal Consiglio di Amministrazione nella Riunione del 5 febbraio 2019 con Delibera n.15/2019 Verbale 368;"]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement key="staticText-21" x="0" y="33" width="10" height="13" uuid="f520c06d-d6ac-49f7-a14a-050c361bdbcf"/>
-					<textElement textAlignment="Center"/>
-					<text><![CDATA[-]]></text>
-				</staticText>
-				<staticText>
-					<reportElement key="staticText-21" x="0" y="64" width="10" height="13" uuid="f2cd972b-0735-4168-b7d5-9c2c30ebbbff">
+					<reportElement key="staticText-21" x="0" y="49" width="10" height="13" uuid="f2cd972b-0735-4168-b7d5-9c2c30ebbbff">
 						<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					</reportElement>
 					<textElement textAlignment="Center"/>
