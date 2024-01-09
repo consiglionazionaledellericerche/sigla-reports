@@ -133,7 +133,7 @@ Dott. Pietro Piro
 				<staticText>
 					<reportElement key="staticText-23" style="TNR11" x="379" y="10" width="133" height="14" uuid="970b4de6-0a61-45c8-9c67-d5ad23038646"/>
 					<textElement textAlignment="Center"/>
-					<text><![CDATA[IL DIRETTORE DCGR]]></text>
+					<text><![CDATA[IL DIRIGENTE]]></text>
 				</staticText>
 			</band>
 		</groupFooter>
