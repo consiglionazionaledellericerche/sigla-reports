@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final utlizzo versione della libreria JasperReports6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Provvedimento - Cessazione" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20" uuid="3a5d9bcb-29e7-4ad4-b9cf-42ac6f8d76e4">
 	<property name="ireport.scriptlethandling" value="0"/>
 	<property name="ireport.encoding" value="UTF-8"/>
@@ -9,6 +10,7 @@
 	<property name="net.sf.jasperreports.export.pdf.tagged" value="true"/>
 	<property name="net.sf.jasperreports.default.pdf.embedded" value="true"/>
 	<property name="net.sf.jasperreports.export.pdfa.icc.profile.path" value="/AdobeRGB1998.icc"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="JsonDomandeLg104"/>
 	<import value="net.sf.jasperreports.engine.*"/>
 	<import value="java.util.*"/>
 	<import value="net.sf.jasperreports.engine.data.*"/>
@@ -99,40 +101,39 @@
 	<group name="Domanda_Id">
 		<groupExpression><![CDATA[$F{domanda_id}]]></groupExpression>
 		<groupHeader>
-			<band height="167">
+			<band height="157">
 				<staticText>
 					<reportElement key="staticText-2" style="TNRG14" x="0" y="115" width="535" height="19" uuid="9fa39494-579e-408f-9d76-4db3f26b68a5"/>
 					<textElement textAlignment="Center"/>
 					<text><![CDATA[Direzione Centrale Gestione delle Risorse]]></text>
 				</staticText>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement key="textField-2" style="TNR11" x="56" y="89" width="479" height="16" uuid="efb618ed-88d9-424f-a8f7-6248f2ae795c"/>
 					<textFieldExpression><![CDATA[$F{dip_nominativo}.trim()+" Legge 104/92"]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement key="textField" style="TNR11" x="0" y="32" width="100" height="14" uuid="c75978c7-8372-4f88-8dbd-7f11e1157066"/>
 					<textFieldExpression><![CDATA["Sede: "+$F{sede_id}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement key="textField" style="TNR11" x="0" y="15" width="112" height="14" uuid="52b4e3e9-13cc-477e-83c9-86a2dfb286c0"/>
 					<textFieldExpression><![CDATA["Pos. "+$F{dip_pos_fasc}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement key="staticText-3" style="TNR12" x="0" y="134" width="535" height="31" uuid="95111215-c14c-41c2-bba6-981a59cbdc78"/>
+					<reportElement key="staticText-3" style="TNR12" x="0" y="134" width="535" height="16" uuid="95111215-c14c-41c2-bba6-981a59cbdc78"/>
 					<textElement textAlignment="Center"/>
 					<text><![CDATA[Ufficio Gestione Risorse Umane
-Dott. Pierluigi Raimondi
 ]]></text>
 				</staticText>
 				<staticText>
 					<reportElement key="staticText-1" style="TNRG11" x="0" y="89" width="56" height="16" uuid="8887bc45-1ee2-4c3e-ba93-7d4dcdd99ec8"/>
 					<text><![CDATA[Oggetto:]]></text>
 				</staticText>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement key="textField-1" style="TNR11" x="0" y="1" width="112" height="14" uuid="89ca2622-6c02-4f82-8cd0-e215e8697c64"/>
 					<textFieldExpression><![CDATA["Matricola: "+$F{matricola}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement key="textField" style="TNR11" x="0" y="46" width="144" height="14" uuid="78b1e3de-01b4-40ea-ac3c-9a859428443f"/>
 					<textFieldExpression><![CDATA["Cod. Assenza: "+$F{provv_cod_assenza}]]></textFieldExpression>
 				</textField>
@@ -143,7 +144,7 @@ Dott. Pierluigi Raimondi
 				<staticText>
 					<reportElement key="staticText-23" style="TNR11" x="389" y="20" width="133" height="14" uuid="98da9fd8-8530-4b0d-bcd6-752e5ab48772"/>
 					<textElement textAlignment="Center"/>
-					<text><![CDATA[IL DIRIGENTE]]></text>
+					<text><![CDATA[IL DIRETTORE DCGR]]></text>
 				</staticText>
 			</band>
 		</groupFooter>
@@ -151,23 +152,43 @@ Dott. Pierluigi Raimondi
 	<group name="Detail_1">
 		<groupExpression><![CDATA[$V{REPORT_COUNT}]]></groupExpression>
 		<groupHeader>
-			<band height="59" splitType="Stretch">
+			<band height="96" splitType="Stretch">
 				<staticText>
-					<reportElement key="staticText-4" style="TNR12" x="0" y="4" width="535" height="15" uuid="29976ab3-676f-47f0-9aaa-8a5ce7c6f0a2"/>
-					<textElement textAlignment="Center">
-						<font size="12"/>
-					</textElement>
-					<text><![CDATA[IL DIRIGENTE]]></text>
-				</staticText>
-				<staticText>
-					<reportElement key="staticText-11" x="0" y="30" width="10" height="13" uuid="eb4cb962-a8c6-4466-a510-72b0b63aff72"/>
+					<reportElement key="staticText-11" x="0" y="3" width="10" height="13" uuid="eb4cb962-a8c6-4466-a510-72b0b63aff72"/>
 					<textElement textAlignment="Center"/>
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<staticText>
-					<reportElement key="staticText-5" style="TNR11" x="10" y="30" width="515" height="26" uuid="0b0fe0b2-d6ee-4550-abc3-6a395d43c145"/>
+					<reportElement key="staticText-5" style="TNR11" x="10" y="3" width="515" height="26" uuid="0b0fe0b2-d6ee-4550-abc3-6a395d43c145"/>
 					<textElement textAlignment="Justified"/>
-					<text><![CDATA[Visto il provvedimento del Direttore Generale n. 132 del 30.09.2019 di conferimento incarico di direzione dell'Ufficio Gestione Risorse Umane al Dott. Pierluigi Raimondi]]></text>
+					<text><![CDATA[Visto il provvedimento del Direttore Generale n. 051 prot. n. 39764 del 27.05.2022 di conferimento incarico di direzione ad interim dell'Ufficio Gestione Risorse Umane al Dott. Pierluigi Raimondi]]></text>
+				</staticText>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+					<reportElement key="textField-7" style="TNR11" x="10" y="33" width="515" height="26" uuid="ddd9ff54-52f7-44ea-be18-a3e755c6fee7">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Justified"/>
+					<textFieldExpression><![CDATA["Vista la nota di dimissioni immediate del Dott. Raimondi dall’ incarico di Dirigente a.i. dell’Ufficio Gestione delle Risorse Umane protocollo N. 354915 del 20/11/2023;"]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+					<reportElement key="textField-7" style="TNR11" x="10" y="64" width="515" height="26" uuid="2378a402-914c-493e-ae21-c41fefb2a9fb">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Justified"/>
+					<textFieldExpression><![CDATA["Visto l'articolo 13 comma2 del Disciplinare in Materia di Incarichi Dirigenziali e di Responsabilità approvato dal Consiglio di Amministrazione nella Riunione del 5 febbraio 2019 con Delibera n.15/2019 Verbale 368;"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement key="staticText-21" x="0" y="33" width="10" height="13" uuid="f520c06d-d6ac-49f7-a14a-050c361bdbcf"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[-]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-21" x="0" y="64" width="10" height="13" uuid="f2cd972b-0735-4168-b7d5-9c2c30ebbbff">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[-]]></text>
 				</staticText>
 			</band>
 		</groupHeader>
@@ -179,7 +200,7 @@ Dott. Pierluigi Raimondi
 		<groupExpression><![CDATA[]]></groupExpression>
 		<groupHeader>
 			<band height="19" splitType="Stretch">
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement key="textField-3" style="TNR11" x="10" y="1" width="525" height="13" isRemoveLineWhenBlank="true" uuid="7e904a48-be8a-4360-8523-d40a018f8965"/>
 					<textElement textAlignment="Justified"/>
 					<textFieldExpression><![CDATA["Visto il proprio provvedimento n. "+$F{provv_num}+" in data "+$F{provv_data}+", mediante il quale è stato riconosciuto a "+
@@ -201,7 +222,7 @@ $F{dip_nominativo}.trim()+" in servizio presso "+$F{tab_descr_est}+" - "+$F{sede
 		<groupExpression><![CDATA[]]></groupExpression>
 		<groupHeader>
 			<band height="19" splitType="Stretch">
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement key="textField-7" style="TNR11" x="10" y="0" width="525" height="13" uuid="e87b0562-7054-460d-8be6-bb83732b70ab"/>
 					<textElement textAlignment="Justified"/>
 					<textFieldExpression><![CDATA["Considerato che "+$F{dip_nominativo}.trim()+" ha comunicato che a far data dal "+$F{data_fine_diritto}+" sono intervenuti eventi per i quali è venuto meno il diritto ad usufruire di tali benefici per prestare assistenza a "+
@@ -216,7 +237,7 @@ $F{disab_cognome}+" "+$F{disab_nome}+";"]]></textFieldExpression>
 		</groupHeader>
 		<groupFooter>
 			<band height="21" splitType="Stretch">
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement key="textField-5" style="TNR11" x="10" y="0" width="525" height="13" uuid="468db1e2-fb44-4478-9083-e3ee097a75c0"/>
 					<textElement textAlignment="Justified"/>
 					<textFieldExpression><![CDATA["Il dipendente "+$F{dip_nominativo}.trim()+" in servizio presso "+$F{tab_descr_est}+", a far data dal "+
