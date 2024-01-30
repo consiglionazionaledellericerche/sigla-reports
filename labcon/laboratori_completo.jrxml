@@ -1530,7 +1530,7 @@
 				<textElement textAlignment="Justified" verticalAlignment="Top">
 					<font fontName="Times New Roman" size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Descrition of the joint lab project for "+$F{stringAnni}+" years"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["DESCRIPTION OF THE JOINT LAB PROJECT FOR "+$F{stringAnni}+" years"]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="75" splitType="Stretch">
