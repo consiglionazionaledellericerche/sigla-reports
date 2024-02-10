@@ -313,6 +313,7 @@
 			</band>
 			<band height="37">
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<printWhenExpression><![CDATA[$F{printSchedaPartecipanti}.equals("Y")]]></printWhenExpression>
 				<subreport>
 					<reportElement x="1" y="3" width="515" height="30" uuid="32c0c7c8-319e-4d1d-8b36-d385707c47e5"/>
 					<subreportParameter name="printDisabilitaPartecipanti">
@@ -330,6 +331,7 @@
 			</band>
 			<band height="27">
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<printWhenExpression><![CDATA[$F{printSchedaPartecipanti}.equals("Y")]]></printWhenExpression>
 				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
 					<reportElement key="textField-60" style="TNR10" x="11" y="1" width="493" height="22" uuid="7c0aaacd-1bc0-4f6d-8e4c-e1e9b4c4c911">
 						<property name="com.jaspersoft.studio.unit.x" value="px"/>
@@ -462,7 +464,7 @@ $F{indicatoreIseeAnno2}:
 				</textField>
 			</band>
 			<band height="28">
-				<printWhenExpression><![CDATA[$F{dichiarazioneArc1}!=null]]></printWhenExpression>
+				<printWhenExpression><![CDATA[$F{printSchedaAltreDichiarazioni}.equals("Y") && $F{dichiarazioneArc1}!=null]]></printWhenExpression>
 				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
 					<reportElement key="textField-60" style="TNR10" x="29" y="1" width="474" height="22" uuid="4f05022c-b323-4451-8866-0725c6d78c56">
 						<property name="com.jaspersoft.studio.unit.x" value="px"/>
@@ -481,7 +483,7 @@ $F{indicatoreIseeAnno2}:
 			</band>
 			<band height="26">
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				<printWhenExpression><![CDATA[$F{dichiarazioneArc2}!=null]]></printWhenExpression>
+				<printWhenExpression><![CDATA[$F{printSchedaAltreDichiarazioni}.equals("Y") && $F{dichiarazioneArc2}!=null]]></printWhenExpression>
 				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
 					<reportElement key="textField-60" style="TNR10" x="29" y="1" width="474" height="22" uuid="ef0b278a-83d1-4f9c-a904-4cc9ca561c82">
 						<property name="com.jaspersoft.studio.unit.x" value="px"/>
@@ -501,7 +503,7 @@ $F{indicatoreIseeAnno2}:
 			</band>
 			<band height="26">
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				<printWhenExpression><![CDATA[$F{dichiarazioneArc3}!=null]]></printWhenExpression>
+				<printWhenExpression><![CDATA[$F{printSchedaAltreDichiarazioni}.equals("Y") && $F{dichiarazioneArc3}!=null]]></printWhenExpression>
 				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
 					<reportElement key="textField-60" style="TNR10" x="29" y="1" width="474" height="22" uuid="b66f0860-5fcd-49dd-8362-09e5502e60e5">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
