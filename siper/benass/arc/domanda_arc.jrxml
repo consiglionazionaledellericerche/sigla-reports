@@ -140,11 +140,15 @@
 		<property name="net.sf.jasperreports.json.field.expression" value="numSchedaIsee"/>
 		<fieldDescription><![CDATA[numSchedaIsee]]></fieldDescription>
 	</field>
-	<field name="numSchedaAltreInfo" class="java.lang.String">
+	<field name="numSchedaAltreDichiarazioni" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="numSchedaAltreDichiarazioni"/>
+		<fieldDescription><![CDATA[numSchedaAltreDichiarazioni]]></fieldDescription>
+	</field>
+	<field name="numSchedaAltreInfo" class="java.lang.Integer">
 		<property name="net.sf.jasperreports.json.field.expression" value="numSchedaAltreInfo"/>
 		<fieldDescription><![CDATA[numSchedaAltreInfo]]></fieldDescription>
 	</field>
-	<field name="numSchedaDocumentiSpesa" class="java.lang.Integer">
+	<field name="numSchedaDocumentiSpesa" class="java.lang.String">
 		<property name="net.sf.jasperreports.json.field.expression" value="numSchedaDocumentiSpesa"/>
 		<fieldDescription><![CDATA[numSchedaDocumentiSpesa]]></fieldDescription>
 	</field>
@@ -212,6 +216,10 @@
 		<property name="net.sf.jasperreports.json.field.expression" value="printSchedaAltreInfo"/>
 		<fieldDescription><![CDATA[printSchedaAltreInfo]]></fieldDescription>
 	</field>
+	<field name="printSchedaAltreDichiarazioni" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="printSchedaAltreDichiarazioni"/>
+		<fieldDescription><![CDATA[printSchedaAltreDichiarazioni]]></fieldDescription>
+	</field>
 	<field name="printProvinciaAeroportoStazione" class="java.lang.String">
 		<property name="net.sf.jasperreports.json.field.expression" value="printProvinciaAeroportoStazione"/>
 		<fieldDescription><![CDATA[printProvinciaAeroportoStazione]]></fieldDescription>
@@ -231,6 +239,10 @@
 	<field name="printTelefonoPartecipanti" class="java.lang.String">
 		<property name="net.sf.jasperreports.json.field.expression" value="printTelefonoPartecipanti"/>
 		<fieldDescription><![CDATA[printTelefonoPartecipanti]]></fieldDescription>
+	</field>
+	<field name="printRichiestaDipendente" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="printRichiestaDipendente"/>
+		<fieldDescription><![CDATA[printRichiestaDipendente]]></fieldDescription>
 	</field>
 	<field name="repertorioAnno" class="java.lang.Integer">
 		<property name="net.sf.jasperreports.json.field.expression" value="repertorioAnno"/>
@@ -256,120 +268,18 @@
 		<property name="net.sf.jasperreports.json.field.expression" value="totaleDocumentiSpesa"/>
 		<fieldDescription><![CDATA[totaleDocumentiSpesa]]></fieldDescription>
 	</field>
-	<group name="domanda_id">
-		<groupExpression><![CDATA[$F{domanda_id}]]></groupExpression>
-		<groupHeader>
-			<band height="45" splitType="Stretch">
-				<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				<textField isBlankWhenNull="false">
-					<reportElement key="textField-74" style="TNR9" x="10" y="2" width="493" height="40" printWhenGroupChanges="Dipendente" uuid="2975161e-d6dc-4f7f-bf0a-7b0b914fb719">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<textElement textAlignment="Justified" markup="html"/>
-					<textFieldExpression><![CDATA[($F{dip_sesso}.equals("M")?"Il sottoscritto ":"La sottoscritta ")+" "+
-$F{dip_nominativo}.trim() + ",  "+($F{dip_sesso}.equals("M")?"nato ":"nata ")
-+($F{dip_com_nas}.trim()!=""?" a " + $F{dip_com_nas}.trim():"") + " il "
-+ $F{dip_data_nas}
-+ ", dipendente CNR matricola " + $F{matricola_dip}
-+ ($F{ban_tipo}.equals("ARCCONTRIBUT")
-	?"rivolge domanda affinche' "+($F{dip_sesso}.equals("M")?"gli ":"le ")+" venga concesso un Contributo alle spese sostenute per Attivita' Culturali e Ricreative, Anno Solare "+$F{ban_anno_dichiarazione_redditi}+"."
-	:", presenta domanda di partecipazione all'evento organizzato:")]]></textFieldExpression>
-				</textField>
-			</band>
-			<band height="37">
-				<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				<printWhenExpression><![CDATA[$F{printSchedaPartecipanti}.equals( "Y" )]]></printWhenExpression>
-				<subreport>
-					<reportElement x="1" y="3" width="515" height="30" uuid="e59b64ca-cc63-489a-a4fa-7bc5f91748c5"/>
-					<subreportParameter name="printDisabilitaPartecipanti">
-						<subreportParameterExpression><![CDATA[$F{printDisabilitaPartecipanti}]]></subreportParameterExpression>
-					</subreportParameter>
-					<subreportParameter name="printIntolleranzePartecipanti">
-						<subreportParameterExpression><![CDATA[$F{printIntolleranzePartecipanti}]]></subreportParameterExpression>
-					</subreportParameter>
-					<subreportParameter name="printTelefonoPartecipanti">
-						<subreportParameterExpression><![CDATA[$F{printTelefonoPartecipanti}]]></subreportParameterExpression>
-					</subreportParameter>
-					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JsonDataSource)$P{REPORT_DATA_SOURCE}).subDataSource("partecipanti")]]></dataSourceExpression>
-					<subreportExpression><![CDATA[$P{SUBREPORT_DIR} +"domanda_arc_subreport_partecipanti.jasper"]]></subreportExpression>
-				</subreport>
-			</band>
-			<band height="27">
-				<printWhenExpression><![CDATA[$F{printDichiarazioneCaricoFiscale}.equals("Y") && $F{printSchedaPartecipanti}.equals( "Y" )]]></printWhenExpression>
-				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
-					<reportElement key="textField-60" style="TNR10" x="11" y="1" width="493" height="22" uuid="f6eb6423-86a8-4957-81c1-74f53dff36e1">
-						<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					</reportElement>
-					<textElement textAlignment="Justified" markup="styled">
-						<font isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA["Il richiedente DICHIARA che i partecipanti all'evento sono a proprio carico fiscale."]]></textFieldExpression>
-				</textField>
-			</band>
-		</groupHeader>
-		<groupFooter>
-			<band height="49" splitType="Stretch">
-				<rectangle>
-					<reportElement key="rectangle-2" style="SSH10" x="5" y="23" width="505" height="21" uuid="df1b4684-732f-4efa-bdae-af3649ee58a9"/>
-				</rectangle>
-				<textField isBlankWhenNull="false">
-					<reportElement key="staticText-25" mode="Opaque" x="1" y="1" width="514" height="20" backcolor="#CCCCCC" uuid="254eeaba-841a-427a-9099-ebd09db8538e">
-						<property name="com.jaspersoft.studio.unit.y" value="px"/>
-						<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					</reportElement>
-					<textElement textAlignment="Justified" verticalAlignment="Middle">
-						<font size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{numSchedaReperibilita}+" - DATI PER LA REPERIBILITA'"]]></textFieldExpression>
-				</textField>
-				<textField isBlankWhenNull="false">
-					<reportElement key="textField-53" style="SSH12" x="11" y="27" width="139" height="14" isRemoveLineWhenBlank="true" uuid="617f091d-91d2-45c6-8b2f-906abc44cb7f"/>
-					<textElement>
-						<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
-					</textElement>
-					<textFieldExpression><![CDATA["Telefono: " + ($F{telefonoRec}==null?"":$F{telefonoRec})]]></textFieldExpression>
-				</textField>
-				<textField isBlankWhenNull="false">
-					<reportElement key="textField-54" style="SSH12" x="158" y="27" width="136" height="14" isRemoveLineWhenBlank="true" uuid="b746d13f-5ae8-41e2-8d70-3407990d28c5"/>
-					<textElement>
-						<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
-					</textElement>
-					<textFieldExpression><![CDATA["Cellulare: " + ($F{cellulareRec}==null?"":$F{cellulareRec})]]></textFieldExpression>
-				</textField>
-				<textField isBlankWhenNull="false">
-					<reportElement key="textField-63" style="SSH12" x="302" y="27" width="200" height="14" isRemoveLineWhenBlank="true" uuid="455b9ee6-b782-48ee-910f-ebd7b241885e"/>
-					<textElement>
-						<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
-					</textElement>
-					<textFieldExpression><![CDATA["Email: " + ($F{emailRec}==null?"":$F{emailRec})]]></textFieldExpression>
-				</textField>
-			</band>
-			<band height="109">
-				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
-					<reportElement key="textField-57" style="TNR9" x="11" y="5" width="491" height="28" uuid="4e3eda4c-1eff-47ac-a556-a911efb7f486"/>
-					<textElement textAlignment="Justified"/>
-					<textFieldExpression><![CDATA[($F{dip_sesso}.equals("M")?"Il sottoscritto ":"La sottoscritta ")+
-$F{dip_nominativo}.trim() + " DICHIARA di essere a conoscenza delle conseguenze civili e penali ai sensi dell'art. 76 DPR 445/2000 per coloro che rendono dichiarazioni non veritiere."]]></textFieldExpression>
-				</textField>
-				<textField isBlankWhenNull="false">
-					<reportElement key="textField-58" style="TNR9" x="11" y="34" width="491" height="39" uuid="39e3715f-8716-4714-9133-326d5fbd50e1"/>
-					<textElement textAlignment="Justified"/>
-					<textFieldExpression><![CDATA[($F{dip_sesso}.equals("M")?"Il sottoscritto ":"La sottoscritta ")+
-$F{dip_nominativo}.trim() + " prende atto, ai sensi dell'art.13 della Legge 196/2003 sul trattamento dei dati personali, che i dati contenuti nella presente autocertificazione verranno trattati prevalentemente con procedure informatizzate e potranno essere forniti ad altri organismi pubblici per il raggiungimento delle rispettive finalità istituzionali."]]></textFieldExpression>
-				</textField>
-				<staticText>
-					<reportElement key="staticText-20" style="SSHG8" positionType="FixRelativeToBottom" x="5" y="77" width="502" height="26" isRemoveLineWhenBlank="true" forecolor="#FF0000" uuid="5830341e-ac25-42ca-b2e9-68bf3d187452">
-						<printWhenExpression><![CDATA[new Boolean($F{stato_domanda}.equals("SALVATAGGIO_DIP"))]]></printWhenExpression>
-					</reportElement>
-					<box leftPadding="4"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
-					</textElement>
-					<text><![CDATA[(*) DOMANDA NON CONFERMATA: ricordarsi di confermare la domanda altrimenti risulterà non valida.]]></text>
-				</staticText>
-			</band>
-		</groupFooter>
-	</group>
+	<field name="dichiarazioneArc1" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="dichiarazioneArc1"/>
+		<fieldDescription><![CDATA[dichiarazioneArc1]]></fieldDescription>
+	</field>
+	<field name="dichiarazioneArc2" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="dichiarazioneArc2"/>
+		<fieldDescription><![CDATA[dichiarazioneArc2]]></fieldDescription>
+	</field>
+	<field name="dichiarazioneArc3" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="dichiarazioneArc3"/>
+		<fieldDescription><![CDATA[dichiarazioneArc3]]></fieldDescription>
+	</field>
 	<group name="Dipendente">
 		<groupExpression><![CDATA[$F{matricola_dip}]]></groupExpression>
 		<groupHeader>
@@ -400,6 +310,35 @@ $F{dip_nominativo}.trim() + " prende atto, ai sensi dell'art.13 della Legge 196/
 					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JsonDataSource)$P{REPORT_DATA_SOURCE}).subDataSource("carichiFiscali")]]></dataSourceExpression>
 					<subreportExpression><![CDATA[$P{SUBREPORT_DIR} +"domanda_arc_subreport_carichi_fiscali.jasper"]]></subreportExpression>
 				</subreport>
+			</band>
+			<band height="37">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<subreport>
+					<reportElement x="1" y="3" width="515" height="30" uuid="32c0c7c8-319e-4d1d-8b36-d385707c47e5"/>
+					<subreportParameter name="printDisabilitaPartecipanti">
+						<subreportParameterExpression><![CDATA[$F{printDisabilitaPartecipanti}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="printIntolleranzePartecipanti">
+						<subreportParameterExpression><![CDATA[$F{printIntolleranzePartecipanti}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="printTelefonoPartecipanti">
+						<subreportParameterExpression><![CDATA[$F{printTelefonoPartecipanti}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JsonDataSource)$P{REPORT_DATA_SOURCE}).subDataSource("partecipanti")]]></dataSourceExpression>
+					<subreportExpression><![CDATA[$P{SUBREPORT_DIR} +"domanda_arc_subreport_partecipanti.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+			<band height="27">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
+					<reportElement key="textField-60" style="TNR10" x="11" y="1" width="493" height="22" uuid="7c0aaacd-1bc0-4f6d-8e4c-e1e9b4c4c911">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Justified" markup="styled">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Il richiedente DICHIARA che i partecipanti all'evento sono a proprio carico fiscale."]]></textFieldExpression>
+				</textField>
 			</band>
 			<band height="54">
 				<printWhenExpression><![CDATA[$F{printSchedaIsee}.equals( "Y" )]]></printWhenExpression>
@@ -467,7 +406,7 @@ $F{indicatoreIseeAnno2}:
 					<textFieldExpression><![CDATA[$F{numSchedaDocumentiSpesa}+" - ELENCO DOCUMENTI ATTESTANTI LA SPESA SOSTENUTA"]]></textFieldExpression>
 				</textField>
 				<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
-					<reportElement key="textField-3" style="TNR10" positionType="Float" x="34" y="52" width="188" height="15" uuid="e74a0f21-6780-4d6e-8b01-d3f42474018c"/>
+					<reportElement key="textField-3" style="TNR10" positionType="Float" x="34" y="52" width="188" height="15" printWhenGroupChanges="domanda_id" uuid="e74a0f21-6780-4d6e-8b01-d3f42474018c"/>
 					<box leftPadding="0"/>
 					<textElement verticalAlignment="Middle">
 						<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
@@ -497,7 +436,89 @@ $F{indicatoreIseeAnno2}:
 					<textFieldExpression><![CDATA[$F{totaleDocumentiSpesa}]]></textFieldExpression>
 				</textField>
 			</band>
-			<band height="25">
+			<band height="45">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<printWhenExpression><![CDATA[$F{printSchedaAltreDichiarazioni}.equals("Y")]]></printWhenExpression>
+				<textField isBlankWhenNull="false">
+					<reportElement key="staticText-25" mode="Opaque" x="0" y="3" width="514" height="20" backcolor="#CCCCCC" uuid="e2b62a48-6377-4471-8ee5-ab86164a64f3">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numSchedaAltreDichiarazioni}+" - ALTRE DICHIARAZIONI"]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+					<reportElement key="textField-3" style="TNR10" positionType="Float" x="11" y="27" width="408" height="15" uuid="fe8d29ef-6839-4b55-a80d-5ec34b0b1b83">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<box leftPadding="0"/>
+					<textElement verticalAlignment="Middle" markup="styled">
+						<font size="9" isBold="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Il sottoscritto  <style isBold='true'>DICHIARA</style> che:"]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="28">
+				<printWhenExpression><![CDATA[$F{dichiarazioneArc1}!=null]]></printWhenExpression>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
+					<reportElement key="textField-60" style="TNR10" x="29" y="1" width="474" height="22" uuid="4f05022c-b323-4451-8866-0725c6d78c56">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Justified" markup="styled"/>
+					<textFieldExpression><![CDATA[$F{dichiarazioneArc1}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
+					<reportElement key="textField-60" style="TNR10" x="11" y="1" width="18" height="22" uuid="3b8c11e4-1471-449c-bec2-5e844ca9dd9d">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Justified" markup="styled"/>
+					<textFieldExpression><![CDATA["-"]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="26">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<printWhenExpression><![CDATA[$F{dichiarazioneArc2}!=null]]></printWhenExpression>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
+					<reportElement key="textField-60" style="TNR10" x="29" y="1" width="474" height="22" uuid="ef0b278a-83d1-4f9c-a904-4cc9ca561c82">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Justified" markup="styled"/>
+					<textFieldExpression><![CDATA[$F{dichiarazioneArc2}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
+					<reportElement key="textField-60" style="TNR10" x="11" y="1" width="18" height="22" uuid="c8660e63-4695-41d2-9edc-638512bbc0f0">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Justified" markup="styled"/>
+					<textFieldExpression><![CDATA["-"]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="26">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<printWhenExpression><![CDATA[$F{dichiarazioneArc3}!=null]]></printWhenExpression>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
+					<reportElement key="textField-60" style="TNR10" x="29" y="1" width="474" height="22" uuid="b66f0860-5fcd-49dd-8362-09e5502e60e5">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Justified" markup="styled"/>
+					<textFieldExpression><![CDATA[$F{dichiarazioneArc3}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
+					<reportElement key="textField-60" style="TNR10" x="11" y="1" width="18" height="22" uuid="a64aadda-1a83-4585-bca8-51bfa68fac07">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Justified" markup="styled"/>
+					<textFieldExpression><![CDATA["-"]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="28">
 				<printWhenExpression><![CDATA[$F{printSchedaAltreInfo}.equals( "Y" )]]></printWhenExpression>
 				<textField isBlankWhenNull="false">
 					<reportElement key="staticText-25" mode="Opaque" x="0" y="3" width="514" height="20" backcolor="#CCCCCC" uuid="7db9bf1c-e8a3-4e3c-8d30-509ff0a9a920">
@@ -553,7 +574,7 @@ $F{indicatoreIseeAnno2}:
 			</band>
 			<band height="25">
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				<printWhenExpression><![CDATA[$F{printSchedaAltreInfo}.equals( "Y" )]]></printWhenExpression>
+				<printWhenExpression><![CDATA[$F{printSchedaAltreInfo}.equals( "Y" )&&$F{noteGeneriche}!=null && $F{noteGeneriche}!=""]]></printWhenExpression>
 				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
 					<reportElement key="textField-60" style="TNR10" x="11" y="1" width="493" height="22" uuid="998c9629-0801-42cf-9960-45e961c99c2a">
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -565,6 +586,91 @@ $F{indicatoreIseeAnno2}:
 		</groupHeader>
 		<groupFooter>
 			<band splitType="Stretch"/>
+		</groupFooter>
+	</group>
+	<group name="domanda_id">
+		<groupExpression><![CDATA[$F{domanda_id}]]></groupExpression>
+		<groupHeader>
+			<band height="45" splitType="Stretch">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<printWhenExpression><![CDATA[$F{printSchedaAltreInfo}.equals( "Y" ) && $F{printRichiestaDipendente}.equals( "Y" )]]></printWhenExpression>
+				<textField isBlankWhenNull="false">
+					<reportElement key="textField-74" style="TNR9" x="10" y="2" width="493" height="40" uuid="2975161e-d6dc-4f7f-bf0a-7b0b914fb719">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Justified" markup="html"/>
+					<textFieldExpression><![CDATA[($F{dip_sesso}.equals("M")?"Il sottoscritto ":"La sottoscritta ")+" "+
+$F{dip_nominativo}.trim() + ",  "+($F{dip_sesso}.equals("M")?"nato ":"nata ")
++($F{dip_com_nas}.trim()!=""?" a " + $F{dip_com_nas}.trim():"") + " il "
++ $F{dip_data_nas}
++ ", dipendente CNR matricola " + $F{matricola_dip}
++ ($F{ban_tipo}.equals("ARCCONTRIBUT")
+	?"rivolge domanda affinche' "+($F{dip_sesso}.equals("M")?"gli ":"le ")+" venga concesso un Contributo alle spese sostenute per Attivita' Culturali e Ricreative, Anno Solare "+$F{ban_anno_dichiarazione_redditi}+"."
+	:", presenta domanda di partecipazione all'evento organizzato:")]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="49" splitType="Stretch">
+				<rectangle>
+					<reportElement key="rectangle-2" style="SSH10" x="5" y="23" width="505" height="21" uuid="df1b4684-732f-4efa-bdae-af3649ee58a9"/>
+				</rectangle>
+				<textField isBlankWhenNull="false">
+					<reportElement key="staticText-25" mode="Opaque" x="1" y="1" width="514" height="20" backcolor="#CCCCCC" uuid="254eeaba-841a-427a-9099-ebd09db8538e">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numSchedaReperibilita}+" - DATI PER LA REPERIBILITA'"]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement key="textField-53" style="SSH12" x="11" y="27" width="139" height="14" isRemoveLineWhenBlank="true" uuid="617f091d-91d2-45c6-8b2f-906abc44cb7f"/>
+					<textElement>
+						<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Telefono: " + ($F{telefonoRec}==null?"":$F{telefonoRec})]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement key="textField-54" style="SSH12" x="158" y="27" width="136" height="14" isRemoveLineWhenBlank="true" uuid="b746d13f-5ae8-41e2-8d70-3407990d28c5"/>
+					<textElement>
+						<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Cellulare: " + ($F{cellulareRec}==null?"":$F{cellulareRec})]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement key="textField-63" style="SSH12" x="302" y="27" width="200" height="14" isRemoveLineWhenBlank="true" uuid="455b9ee6-b782-48ee-910f-ebd7b241885e"/>
+					<textElement>
+						<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Email: " + ($F{emailRec}==null?"":$F{emailRec})]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="109">
+				<textField textAdjust="StretchHeight" isBlankWhenNull="false">
+					<reportElement key="textField-57" style="TNR9" x="11" y="5" width="491" height="28" uuid="4e3eda4c-1eff-47ac-a556-a911efb7f486"/>
+					<textElement textAlignment="Justified"/>
+					<textFieldExpression><![CDATA[($F{dip_sesso}.equals("M")?"Il sottoscritto ":"La sottoscritta ")+
+$F{dip_nominativo}.trim() + " DICHIARA di essere a conoscenza delle conseguenze civili e penali ai sensi dell'art. 76 DPR 445/2000 per coloro che rendono dichiarazioni non veritiere."]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement key="textField-58" style="TNR9" x="11" y="34" width="491" height="39" uuid="39e3715f-8716-4714-9133-326d5fbd50e1"/>
+					<textElement textAlignment="Justified"/>
+					<textFieldExpression><![CDATA[($F{dip_sesso}.equals("M")?"Il sottoscritto ":"La sottoscritta ")+
+$F{dip_nominativo}.trim() + " prende atto, ai sensi dell'art.13 della Legge 196/2003 sul trattamento dei dati personali, che i dati contenuti nella presente autocertificazione verranno trattati prevalentemente con procedure informatizzate e potranno essere forniti ad altri organismi pubblici per il raggiungimento delle rispettive finalità istituzionali."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement key="staticText-20" style="SSHG8" positionType="FixRelativeToBottom" x="5" y="77" width="502" height="26" isRemoveLineWhenBlank="true" forecolor="#FF0000" uuid="5830341e-ac25-42ca-b2e9-68bf3d187452">
+						<printWhenExpression><![CDATA[new Boolean($F{stato_domanda}.equals("SALVATAGGIO_DIP"))]]></printWhenExpression>
+					</reportElement>
+					<box leftPadding="4"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[(*) DOMANDA NON CONFERMATA: ricordarsi di confermare la domanda altrimenti risulterà non valida.]]></text>
+				</staticText>
+			</band>
 		</groupFooter>
 	</group>
 	<background>

@@ -85,7 +85,7 @@
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="52" splitType="Stretch">
+		<band height="53" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
 				<reportElement key="staticText-28" style="SSH12" mode="Opaque" x="0" y="0" width="514" height="17" forecolor="#000000" backcolor="#CCCCCC" uuid="ceda5088-00a7-4ae7-a664-4f92fc9df871">
@@ -133,9 +133,7 @@
 					<printWhenExpression><![CDATA[$P{printIntolleranzePartecipanti}.equals( "Y" )]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center"/>
-				<text><![CDATA[Intolleranze 
-Alimentari/
-Farmaci]]></text>
+				<text><![CDATA[Intolleranze Alimentari/Farmaci]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="SSHG8" x="451" y="21" width="60" height="16" uuid="e7c5e432-eeb1-4498-8b42-0e449bcf947a">
