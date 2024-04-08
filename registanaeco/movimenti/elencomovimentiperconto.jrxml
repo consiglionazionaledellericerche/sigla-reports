@@ -53,6 +53,9 @@
 	<parameter name="Ragr_causale" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["true"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="Ragr_manuale" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["true"]]></defaultValueExpression>
+	</parameter>
 	<parameter name="Ragr_chiusura" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["true"]]></defaultValueExpression>
 	</parameter>
@@ -82,6 +85,7 @@ AND V_COGE_SCR_MOV.ATTIVA LIKE decode($P{Attiva},'*','%',$P{Attiva})
 AND V_COGE_SCR_MOV.CD_VOCE_EP = $P{Conto}
 AND V_COGE_SCR_MOV.TI_ISTITUZ_COMMERC LIKE decode($P{Ist_Comm},'*','%',$P{Ist_Comm})
 and (V_COGE_SCR_MOV.ORIGINE_SCRITTURA='CHIUSURA' and $P{Ragr_chiusura}='true'
+or (V_COGE_SCR_MOV.ORIGINE_SCRITTURA='PRIMA_NOTA_MANUALE' and $P{Ragr_manuale}='true')
 or (V_COGE_SCR_MOV.ORIGINE_SCRITTURA='CAUSALE' and $P{Ragr_causale}='true')
 or (V_COGE_SCR_MOV.ORIGINE_SCRITTURA='DOCAMM' and $P{Ragr_doc_amm}='true')
 or (V_COGE_SCR_MOV.ORIGINE_SCRITTURA='DOCCONT' and $P{Ragr_doc_cont}='true')
@@ -348,7 +352,8 @@ ORDER BY
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[($P{Ragr_causale}.equals("true") ? "Manuale" :"")+" "+
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{Ragr_causale}.equals("true") ? "Causale" :"")+" "+
+($P{Ragr_manuale}.equals("true")? "Prima Nota Manuale":"")+" "+
 ($P{Ragr_chiusura}.equals("true")? "Chiusura":"")+" "+
 ($P{Ragr_doc_amm}.equals("true")? "Doc. Amm. ":"")+" "+
 ($P{Ragr_doc_cont}.equals("true")? "Doc. Cont." :"")+" "+
