@@ -77,6 +77,9 @@
 		<parameter name="trimestre" class="java.lang.String" isForPrompting="false">
 			<defaultValueExpression><![CDATA["1"]]></defaultValueExpression>
 		</parameter>
+		<parameter name="uo_documento" class="java.lang.String" isForPrompting="false">
+			<defaultValueExpression><![CDATA["*"]]></defaultValueExpression>
+		</parameter>
 		<parameter name="DATA_TRASMISSIONE_INIZIO" class="java.util.Date" isForPrompting="false">
 			<defaultValueExpression><![CDATA[new GregorianCalendar(2024, 1, 1).getTime()]]></defaultValueExpression>
 		</parameter>
@@ -87,6 +90,7 @@
 			<![CDATA[select * from V_CONS_INDICATORE_PAGAMENTI 
 			where esercizio = $P{esercizio}
 			   and TIPO_RIGA='DETAIL'
+			    and (($P{uo_documento} != '*' UO_DOCUMENTO = $P{uo_documento}) or $P{uo_documento} = '*')
 				and (($P{trimestre} != '*' and DATA_TRASMISSIONE BETWEEN $P{DATA_TRASMISSIONE_INIZIO} AND $P{DATA_TRASMISSIONE_FINE})
 					or ($P{trimestre} = '*' ))]]>
 		</queryString>
