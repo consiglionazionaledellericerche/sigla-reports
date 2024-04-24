@@ -90,7 +90,7 @@
 			<![CDATA[select * from V_CONS_INDICATORE_PAGAMENTI 
 			where esercizio = $P{esercizio}
 			   and TIPO_RIGA='DETAIL'
-			    and (($P{uo_documento} != '*' UO_DOCUMENTO = $P{uo_documento}) or $P{uo_documento} = '*')
+			    and (($P{uo_documento} != '*' and UO_DOCUMENTO = $P{uo_documento}) or $P{uo_documento} = '*')
 				and (($P{trimestre} != '*' and DATA_TRASMISSIONE BETWEEN $P{DATA_TRASMISSIONE_INIZIO} AND $P{DATA_TRASMISSIONE_FINE})
 					or ($P{trimestre} = '*' ))]]>
 		</queryString>
