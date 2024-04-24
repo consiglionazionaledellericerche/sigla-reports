@@ -90,7 +90,7 @@
 			<![CDATA[select * from V_CONS_INDICATORE_PAGAMENTI 
 			where esercizio = $P{esercizio}
 			   and TIPO_RIGA='DETAIL'
-			    and (($P{uo_documento} != '*' and UO_DOCUMENTO = $P{uo_documento}) or $P{uo_documento} = '*')
+			    and (($P{uo_documento} != '*' and (UO_DOCUMENTO = $P{uo_documento} or UO_DOCUMENTO is null)) or $P{uo_documento} = '*')
 				and (($P{trimestre} != '*' and DATA_TRASMISSIONE BETWEEN $P{DATA_TRASMISSIONE_INIZIO} AND $P{DATA_TRASMISSIONE_FINE})
 					or ($P{trimestre} = '*' ))]]>
 		</queryString>
@@ -192,12 +192,12 @@
 		<defaultValueExpression><![CDATA["1"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="uo_documento" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["*"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["084.000"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[select INDICE_PAGAMENTI from V_CONS_INDICATORE_PAGAMENTI 
 			where esercizio = $P{esercizio}
-			    and (($P{uo_documento} != '*' and UO_DOCUMENTO = $P{uo_documento}) or $P{uo_documento} = '*')
+			    and (($P{uo_documento} != '*' and (UO_DOCUMENTO = $P{uo_documento} or UO_DOCUMENTO is null)) or $P{uo_documento} = '*')
 				and (($P{trimestre} != '*' and TRIMESTRE = $P{trimestre} and TIPO_RIGA='SUM_TRIMESTRE') 
 					or ($P{trimestre} = '*' and TIPO_RIGA='SUM_ANNO'))]]>
 	</queryString>
