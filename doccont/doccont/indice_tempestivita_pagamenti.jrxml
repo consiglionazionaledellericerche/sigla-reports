@@ -191,6 +191,9 @@
 	<parameter name="trimestre" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["1"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="uo_documento" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["*"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[select INDICE_PAGAMENTI from V_CONS_INDICATORE_PAGAMENTI 
 			where esercizio = $P{esercizio}
