@@ -316,6 +316,9 @@
 						<datasetParameter name="esercizio">
 							<datasetParameterExpression><![CDATA[$P{esercizio}]]></datasetParameterExpression>
 						</datasetParameter>
+						<datasetParameter name="uo_documento">
+							<datasetParameterExpression><![CDATA[$P{uo_documento}]]></datasetParameterExpression>
+						</datasetParameter>
 						<datasetParameter name="trimestre">
 							<datasetParameterExpression><![CDATA[$P{trimestre}]]></datasetParameterExpression>
 						</datasetParameter>
