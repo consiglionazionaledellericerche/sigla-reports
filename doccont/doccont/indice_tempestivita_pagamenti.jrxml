@@ -253,7 +253,7 @@
 				<textElement textAlignment="Center">
 					<font size="16"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Indicatore relativo al periodo " + $V{periodo} + "  " + $P{esercizio} + " (*)" + $P{uo_documento}.equalsIgnoreCase( "*" )?"": " UO:"+$P{uo_documento}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Indicatore relativo al periodo " + $V{periodo} + "  " + $P{esercizio} + " (*)" + ($P{uo_documento}.equalsIgnoreCase( "*" )?"": (" UO:"+$P{uo_documento}))]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Column">
 				<reportElement style="TNRG16" mode="Opaque" x="130" y="90" width="260" height="40" uuid="b8eb1a4e-70af-44bf-9b47-3b5ab13a3137"/>
