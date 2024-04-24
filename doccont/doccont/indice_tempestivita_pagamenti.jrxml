@@ -198,8 +198,8 @@
 		<![CDATA[select INDICE_PAGAMENTI from V_CONS_INDICATORE_PAGAMENTI 
 			where esercizio = $P{esercizio}
 			    and (($P{uo_documento} != '*' and UO_DOCUMENTO = $P{uo_documento}) or $P{uo_documento} = '*')
-				and (($P{trimestre} != '*' and TRIMESTRE = $P{trimestre} and TIPO_RIGA='SUM_TRIMESTRE') 
-					or ($P{trimestre} = '*' and TIPO_RIGA='SUM_ANNO'))]]>
+				and (($P{trimestre} != '*' and TRIMESTRE = $P{trimestre} and (($P{uo_documento} = '*' and TIPO_RIGA='SUM_TRIMESTRE') OR ($P{uo_documento} != '*' and TIPO_RIGA='SUM_TRIMESTRE_UO')  )) 
+					or ($P{trimestre} = '*' and (( $P{uo_documento} = '*' and TIPO_RIGA='SUM_ANNO') OR ( $P{uo_documento} != '*' and TIPO_RIGA='SUM_ANNO_UO'  ) )))]]>
 	</queryString>
 	<field name="INDICE_PAGAMENTI" class="java.math.BigDecimal"/>
 	<variable name="periodo" class="java.lang.String">
