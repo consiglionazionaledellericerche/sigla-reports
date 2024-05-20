@@ -345,7 +345,7 @@ $F{TRASFPIU_FIN}.subtract($F{TRASFMENO_FIN}).abs():BigDecimal.ZERO]]></variableE
 	<variable name="cdrPrinted" class="java.lang.Integer" resetType="Group" resetGroup="VOCE_ECONOMICA" incrementType="Group" incrementGroup="CDR">
 		<variableExpression><![CDATA[$F{CD_CENTRO_RESPONSABILITA}!=null&&
 ($F{CD_CENTRO_RESPONSABILITA}.equals($P{P_CENTRO_RESPONSABILITA})||
-$F{CD_CENTRO_RESPONSABILITA}.substring(7).equals($P{P_UO_COORDINATRICE})) ?
+$F{CD_CENTRO_RESPONSABILITA}.substring(0,7).equals($P{P_UO_COORDINATRICE})) ?
 ($V{cdrPrinted} + 1) : $V{cdrPrinted}]]></variableExpression>
 		<initialValueExpression><![CDATA[0]]></initialValueExpression>
 	</variable>
@@ -675,7 +675,7 @@ $F{ESERCIZIO}.compareTo($P{P_ESERCIZIO})<0?"Precedente":"Futuro")]]></textFieldE
 				<printWhenExpression><![CDATA[$P{P_PRINT_DETAIL}.equals("Y")&&
 $F{CD_CENTRO_RESPONSABILITA}!=null&&
 ($F{CD_CENTRO_RESPONSABILITA}.equals($P{P_CENTRO_RESPONSABILITA})||
-$P{P_CENTRO_RESPONSABILITA}.substring(7).equals($P{P_UO_COORDINATRICE})||
+$P{P_CENTRO_RESPONSABILITA}.substring(0,7).equals($P{P_UO_COORDINATRICE})||
 $P{P_UO_ENTE}.equals("Y"))]]></printWhenExpression>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="VERB8" x="42" y="1" width="261" height="15" uuid="a35d304d-4645-4736-afd3-9e54dc4ec887"/>
@@ -741,7 +741,7 @@ $P{P_UO_ENTE}.equals("Y"))]]></printWhenExpression>
 				<printWhenExpression><![CDATA[$P{P_PRINT_DETAIL}.equals("Y")&&
 $F{CD_CENTRO_RESPONSABILITA}!=null&&
 ($F{CD_CENTRO_RESPONSABILITA}.equals($P{P_CENTRO_RESPONSABILITA})||
-$P{P_CENTRO_RESPONSABILITA}.substring(7).equals($P{P_UO_COORDINATRICE})||
+$P{P_CENTRO_RESPONSABILITA}.substring(0,7).equals($P{P_UO_COORDINATRICE})||
 $P{P_UO_ENTE}.equals("Y"))]]></printWhenExpression>
 				<staticText>
 					<reportElement key="staticText-54" style="VERB8" x="16" y="1" width="53" height="15" uuid="8dab7f75-3cf6-417f-84ee-768c4f254fff"/>
@@ -1262,7 +1262,7 @@ Economico]]></text>
 			<printWhenExpression><![CDATA[$P{P_PRINT_DETAIL}.equals("Y")&&
 $F{CD_CENTRO_RESPONSABILITA}!=null&&
 ($F{CD_CENTRO_RESPONSABILITA}.equals($P{P_CENTRO_RESPONSABILITA})||
-$P{P_CENTRO_RESPONSABILITA}.substring(7).equals($P{P_UO_COORDINATRICE})||
+$P{P_CENTRO_RESPONSABILITA}.substring(0,7).equals($P{P_UO_COORDINATRICE})||
 $P{P_UO_ENTE}.equals("Y"))]]></printWhenExpression>
 			<textField>
 				<reportElement style="VERB8" x="27" y="1" width="62" height="15" uuid="97325fb5-eaf7-46d3-8bad-657925cdf9fa"/>
