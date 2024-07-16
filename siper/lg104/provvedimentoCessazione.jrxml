@@ -105,7 +105,7 @@
 				<staticText>
 					<reportElement key="staticText-2" style="TNRG14" x="0" y="115" width="535" height="19" uuid="9fa39494-579e-408f-9d76-4db3f26b68a5"/>
 					<textElement textAlignment="Center"/>
-					<text><![CDATA[Direzione Centrale Gestione delle Risorse]]></text>
+					<text><![CDATA[DIREZIONE CENTRALE RISORSE UMANE]]></text>
 				</staticText>
 				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement key="textField-2" style="TNR11" x="56" y="89" width="479" height="16" uuid="efb618ed-88d9-424f-a8f7-6248f2ae795c"/>
