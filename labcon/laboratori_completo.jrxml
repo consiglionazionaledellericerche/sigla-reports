@@ -166,7 +166,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["LABORATORI "+$F{tipoLaboratorio}+":  " + $F{anno}+" - "+$F{annoFine}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["LABORATORI "+$F{tipoLaboratorio}+":  " + $F{anno}]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="40" splitType="Stretch">
